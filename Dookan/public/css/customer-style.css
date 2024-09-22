@@ -1,0 +1,64 @@
+body.auth{
+    position: relative;
+    background-color: #89C2D9;
+
+}
+
+.login-container , .register-container{
+    margin-top: 5.8rem;
+}
+.login-card ,.register-card{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 0 !important;
+
+    position: relative;
+    z-index: 2;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+.login-illustration , .register-illustration{
+    max-width: 100%;
+    height: auto;
+}
+. login-form-section , .register-form-section{
+    margin: 0 auto;
+}
+
+.box {
+    position: fixed;
+    top: 0;
+    transform: rotate(80deg);
+    left: 0;
+}
+
+.wave {
+    position: absolute;
+    opacity: .4;
+    width: 1500px;
+    height: 1300px;
+    margin-left: -150px;
+    margin-top: -250px;
+    border-radius: 43%;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    from {transform: rotate(360deg);}
+}
+
+.wave.-one {
+    animation: rotate 10000ms infinite linear;
+    opacity: 5%;
+    background: white;
+}
+
+.wave.-two {
+    animation: rotate 6000ms infinite linear;
+    opacity: 10%;
+    background: white;
+}
