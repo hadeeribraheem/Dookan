@@ -13,17 +13,21 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if($request->user()->role !== $role){
-            if($request->user()->role == 'seller'){
-                return redirect()->route('seller.dashbaord');
-            }elseif ($request->user()->role == 'admin'){
-                return redirect()->route('admin.dashbaord');
-            }else {
-                return redirect()->route('user.profile');
+
+        $userRole = $request->user()->role;
+
+        if (!in_array($userRole, $roles)) {
+            if ($userRole == 'seller') {
+                return redirect()->route('seller.dashboard');
+            } elseif ($userRole == 'admin') {
+                return redirect()->route('seller.profile');
+            } else {
+                return redirect()->route('products.index');  // users that didnt login they will redirected to home where they can see all products
             }
         }
+        //dd($request->url());
         return $next($request);
     }
 }

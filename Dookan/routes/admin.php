@@ -27,3 +27,6 @@ Route::resources([
     'products'=>ProductsControllerResource::class,
     'users'=>UserControllerResource::class,
 ]);
+/*Route::resource('products', ProductsControllerResource::class);
+//    'categories' => CategoryControllerResource::class,
+Route::resource('categories',CategoryControllerResource::class);*/

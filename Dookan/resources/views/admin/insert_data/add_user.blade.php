@@ -2,9 +2,9 @@
 @section('content')
     <section class="section">
         <div class="section-body">
-            <h2 class="section-title">Hi, {{ Auth::user()->name }} !</h2>
+            <h2 class="section-title">{{ __('keywords.hi', ['name' => Auth::user()->name]) }} !</h2>
             <p class="section-lead">
-                Easily add new users here.
+                {{ __('keywords.add_users') }}
             </p>
 
             <div class="row mt-sm-4">
@@ -13,45 +13,45 @@
                         <form method="post" action="{{route('admin.users.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-header">
-                                <h4>Add User</h4>
+                                <h4>{{ __('keywords.add_user') }}</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-12 col-md-6">
-                                        <label>User Name</label>
-                                        <input class="form-control" name="name" id="name" placeholder="full user name" value="{{ old('name') }}" required>
+                                        <label>{{ __('keywords.user_name') }}</label>
+                                        <input class="form-control" name="name" id="name" placeholder="{{ __('keywords.user_name_placeholder') }}" value="{{ old('name') }}" required>
                                     </div>
                                     <div class="form-group col-12 col-md-6">
-                                        <label>Username</label>
-                                        <input class="form-control" name="username" id="username" placeholder="username" value="{{ old('username') }}" required>
+                                        <label>{{ __('keywords.username') }}</label>
+                                        <input class="form-control" name="username" id="username" placeholder="{{ __('keywords.username_placeholder') }}" value="{{ old('username') }}" required>
                                     </div>
 
                                     <div class="form-group col-12 col-md-4">
-                                        <label for="email">Email Address</label>
-                                        <input type="email" class="form-control" id="email" name="email"  placeholder="you@example.com" value="{{ old('email') }}" required>
+                                        <label for="email">{{ __('keywords.email_address') }}</label>
+                                        <input type="email" class="form-control" id="email" name="email"  placeholder="{{ __('keywords.email_placeholder') }}" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="form-group col-12 col-md-4">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" placeholder="Your Phone Number" name="phone" value="{{ old('phone') }}" required>
+                                        <label for="phone">{{ __('keywords.phone_number') }}</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="{{ __('keywords.phone_placeholder') }}" name="phone" value="{{ old('phone') }}" required>
                                     </div>
                                     <div class="form-group col-12 col-md-4">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password"  placeholder="Enter 6 characters or more" required>
+                                        <label for="password">{{ __('keywords.password') }}</label>
+                                        <input type="password" class="form-control" id="password" name="password"  placeholder="{{ __('keywords.password_placeholder') }}" required>
                                     </div>
 
                                     <div class="form-group col-12 col-md-6">
-                                        <label>User Roles</label>
+                                        <label>{{ __('keywords.user_roles') }}</label>
                                         <select name="role" id="role" class="form-control" required>
-                                            <option value="">Select Roles</option>
+                                            <option value="">{{ __('keywords.select_roles') }}</option>
                                             @foreach($roles as $role)
                                                 <option value="{{ $role }}">{{ $role }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-12 col-md-6">
-                                        <label>User Profile Status</label>
+                                        <label>{{ __('keywords.user_status') }}</label>
                                         <select name="status" id="status" class="form-control" required>
-                                            <option value="">Select Status</option>
+                                            <option value="">{{ __('keywords.select_status') }}</option>
                                             @foreach($statuses as $status)
                                                 <option value="{{$status}}">{{ $status }}</option>
                                             @endforeach
@@ -59,14 +59,14 @@
                                     </div>
 
                                     <div class="form-group col-12">
-                                        <label>Images</label>
+                                        <label>{{ __('keywords.images') }}</label>
                                         <input class="form-control" type="file" name="image">
                                     </div>
 
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">Add User</button>
+                                <button type="submit" class="btn btn-primary">{{ __('keywords.add_user_button') }}</button>
                             </div>
                         </form>
                     </div>

@@ -7,12 +7,12 @@
             <table id="Data_table" class="table table-striped table-borderless datatable datatable-table">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                    <th>Icon</th>
-                    <th>Created At</th>
-                    <th>Actions</th>
+                    <th>{{ __('keywords.hash') }}</th>
+                    <th>{{ __('keywords.category_name') }}</th>
+                    <th>{{ __('keywords.description') }}</th>
+                    <th>{{ __('keywords.icon') }}</th>
+                    <th>{{ __('keywords.created_at') }}</th>
+                    <th>{{ __('keywords.actions') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,16 +27,9 @@
                             <a href="{{ route('admin.categories.edit', $category['id']) }}" class="btn btn-sm btn-primary rounded-circle m-1">
                                 <i class="bi bi-pen-fill text-white"></i>
                             </a>
-                            <a href="/delete-item?model_name=Categories&id={{ $category['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1"> <i class="bi bi-trash3-fill text-white"></i></a>
-
-                           {{-- <form action="{{ route('admin.delete.item') }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $category['id'] }}">
-                                <input type="hidden" name="model_name" value="Categories">
-                                <button type="submit" class="btn btn-sm btn-danger rounded-circle m-1">
-                                    <i class="bi bi-trash3-fill text-white"></i>
-                                </button>
-                            </form>--}}
+                            <a href="/delete-item?model_name=Categories&id={{ $category['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1">
+                                <i class="bi bi-trash3-fill text-white"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

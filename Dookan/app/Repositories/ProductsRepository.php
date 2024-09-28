@@ -31,7 +31,6 @@ class ProductsRepository
     }
     public function saveProduct($data)
     {
-        // Check for duplicate product
         $duplicateProduct = Products::where('user_id', auth()->id())
             ->where('sku', $data['sku'])
             ->exists();
@@ -41,7 +40,6 @@ class ProductsRepository
             return false;
         }
 
-        // Handle translations
         $nameTranslations = $this->translateservice->KeyMapTranslations($data['name']);
         $data['ar_name'] = $nameTranslations['ar'];
         $data['en_name'] = $nameTranslations['en'];
@@ -61,19 +59,17 @@ class ProductsRepository
         );
 
         if ($Product->wasRecentlyCreated) {
-            Flasher::addSuccess('Product has been successfully added!');
+            Flasher::addSuccess(__('keywords.product_add_success'));
         } else {
-            Flasher::addSuccess('Product has been successfully updated!');
+            Flasher::addSuccess(__('keywords.product_update_success'));
         }
 
         return $Product;
     }
     public function updateProduct($id, $data, $images = [])
     {
-        // Fetch the product with its associated images
         $product = $this->getProductById($id);
 
-        // Check if no images are uploaded and no existing images
         if (sizeof($product->images) == 0 && empty($images)) {
             return [
                 'status' => 'error',
@@ -81,15 +77,12 @@ class ProductsRepository
             ];
         }
 
-        // Prepare the data for updating the product
         $data['id'] = $id;
         $data['user_id'] = $product->user_id;
 
-        // Save or update the product using shared logic
         $savedProduct = $this->updateOrCreateProduct($data);
 
         if ($savedProduct) {
-            // Trigger the event to handle image saving
             event(new ProductsImagesSaveEvent($savedProduct, $images));
         }
 
@@ -98,7 +91,6 @@ class ProductsRepository
 
     private function updateOrCreateProduct($data)
     {
-        // Translation handling
         $nameTranslations = $this->translateservice->KeyMapTranslations($data['name']);
         $data['ar_name'] = $nameTranslations['ar'];
         $data['en_name'] = $nameTranslations['en'];

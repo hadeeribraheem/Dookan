@@ -17,6 +17,7 @@ class ProductsResource extends JsonResource
     {
         $arr = [
             'id' => $this->id,
+            'status'=> $this->status,
             'sku'=> $this->sku,
 
             'user_name' => $this->whenLoaded('user', function () {

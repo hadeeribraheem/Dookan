@@ -25,4 +25,8 @@ class Products extends Model
     {
         return $this->belongsTo(User::class)->withTrashed();
     }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

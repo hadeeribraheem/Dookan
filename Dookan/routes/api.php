@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\ProductsControllerResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-route::group(['prefix' => 'auth'], function () {
-    Route::post('/register', [RegisterController::class, 'register'])->name('api.register');
-    //Route::post('/login', [LoginController::class, 'apiLogin'])->name('api.login');
+
+Route::group(['middleware' => 'changeLang'], function () {
+
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/register', [RegisterController::class, 'register']);
+        Route::post('/login', LoginController::class);
+    });
+    Route::resource('products', ProductsControllerResource::class)
+        ->names([
+            'index' => 'api.products.index',
+            'store' => 'api.products.store',
+            'show' => 'api.products.show',
+            'update' => 'api.products.update',
+            'destroy' => 'api.products.destroy',
+        ]);;
+    Route::middleware('auth:sanctum')->group(function () {
+
+    });
+
 });
-//Route::post('/logout', [LogoutController::class, 'apiLogout'])->name('api.logout');
+
+

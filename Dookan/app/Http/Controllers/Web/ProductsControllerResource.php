@@ -23,6 +23,7 @@ class ProductsControllerResource extends Controller
 
     public function __construct(ProductsRepository $productRepository)
     {
+        $this->middleware(['auth', 'role:seller,admin'])->except(['index', 'show']);
         $this->productRepository = $productRepository;
     }
     /**
@@ -32,10 +33,13 @@ class ProductsControllerResource extends Controller
     {
         $products = $this->productRepository->getAllProducts();
         $productsResource = ProductsResource::collection($products)->resolve();
+        if (auth()->check()) {
+            if (auth()->user()->role === 'admin') {
+                return view('admin.tables.products', compact('productsResource'));
+            }
+        }
+            return view('Home.all_products', compact('productsResource'));
 
-        //dd($productsResource);
-
-        return view('admin.tables.products', compact('productsResource'));
 
         /*$data = Products::query()->orderBy('id','DESC')
             ->get();
@@ -49,9 +53,14 @@ class ProductsControllerResource extends Controller
      */
     public function create()
     {
+       // dd(auth()->user());
+
         $data = Categories::all();
         $categories = CategoriesResource::collection($data)->resolve();
         //dd($categories);
+        if (auth()->user()->role === 'seller') {
+            return view('seller.insert.add_product', compact('categories'));
+        }
         return view('admin.insert_data.add_product',compact('categories'));
     }
    /* public function save($data)
@@ -97,12 +106,13 @@ class ProductsControllerResource extends Controller
 
         if (!$result) {
             DB::rollBack();
-            Flasher::addError('Product could not be saved.');
+            Flasher::addError(__('keywords.product_save_error'));
             return redirect()->back();
         }
         event(new ProductsImagesSaveEvent($result, $request->file('images') ?? []));
 
         DB::commit();
+
 
         return redirect()->back();
 
@@ -123,7 +133,11 @@ class ProductsControllerResource extends Controller
      */
     public function show(string $id)
     {
-        //
+        $productrowdata = $this->productRepository->getProductById($id);
+        $product = ProductsResource::make($productrowdata)->resolve();
+
+       //dd($product);
+        return view('Home.show_product',compact('product'));
     }
 
     /**
@@ -136,8 +150,10 @@ class ProductsControllerResource extends Controller
 
         $productToEdit = $this->productRepository->getProductById($id);
         $product = ProductsResource::make($productToEdit)->resolve();
-        //dd($product);
 
+        if (auth()->user()->role === 'seller') {
+            return view('seller.edit.edit_product', compact('product','categories'));
+        }
         //dd($product['image']);
         //dd($product['image'][0]['id']);
         return view('admin.edit.edit_product', compact('product','categories'));
@@ -152,20 +168,16 @@ class ProductsControllerResource extends Controller
         $result = $this->productRepository->updateProduct($id, $request->except('images'), $request->file('images') ?? []);
 
         if (!$result || (isset($result['status']) && $result['status'] === 'error')) {
-            DB::rollBack();  // Roll back the transaction if saving failed
-            Flasher::addError($result['message'] ?? 'Product could not be updated.');
+            DB::rollBack();  //failed
+            Flasher::addError($result['message'] ?? __('keywords.product_update_error'));
             return redirect()->back();
         }
 
-        DB::commit();  // Commit the transaction if everything is successful
+        DB::commit();
 
-        // Redirect back with a success message
-        Flasher::addSuccess('Product updated successfully');
+        Flasher::addSuccess(__('keywords.product_update_success'));
         return redirect()->back();
-        /*$data = $request->validated();
-        $data['id'] = $id;
-        $this->productRepository->saveProduct($data);
-        return redirect()->back();*/
+
     }
 
     /**

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->double('price');
             $table->integer('quantity');
-
+            $table->tinyInteger('status')->default(1);
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');

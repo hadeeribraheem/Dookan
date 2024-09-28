@@ -21,10 +21,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                //dd($request->url());
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-
+        //dd($request->url());
         return $next($request);
     }
 }

@@ -23,8 +23,13 @@ class ProfileController extends Controller
     }
 
     public function index(){
-
-        return view('admin.profile.index');
+        if (auth()->user()->role === 'admin') {
+            return view('admin.profile.index');
+        }
+        elseif (auth()->user()->role === 'seller') {
+            return view('seller.profile.index');
+        }
+        return view('Home.customer_profile.index');
     }
 
     public function update_user(SaveUserInfoFormRequest $request)
@@ -37,9 +42,7 @@ class ProfileController extends Controller
         $user = $this->userUpdateService->updateExistingUser($data, $file, $user->id);
 
         Flasher::addSuccess('Updated successfully!');
-       // session()->flash('toastr', 'Updated successfully!');
-        return redirect()->route('admin.profile');
-        //return redirect()->route('admin.profile', ['id' => $user->id])->with('success', 'Updated successfully!');
+        return redirect()->back();
     }
 }
 /*

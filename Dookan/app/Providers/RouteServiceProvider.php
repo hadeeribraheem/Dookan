@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/products';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -43,6 +43,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('seller')
                 ->as('seller.')
                 ->group(base_path('routes/seller.php'));
+            //dd(Route::getRoutes());
+
         });
     }
 

@@ -28,10 +28,12 @@ class DeleteController extends Controller
             //dd(request('model_name'));
             //dd(request('id'));
             $modelClass = 'App\Models\\' . request('model_name');
+            //dd($modelClass);
             $item = $modelClass::query()->find(request('id'));
+            //dd($item);
             if ($item){
-                //$item->delete();
-                DB::select('DELETE FROM '.request('model_name').' WHERE id='.request('id'));
+                $item->delete();
+                //DB::select('DELETE FROM '.request('model_name').' WHERE id='.request('id'));
 
             }
 

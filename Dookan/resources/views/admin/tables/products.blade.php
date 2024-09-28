@@ -6,13 +6,13 @@
             <table id="Data_table" class="table table-striped table-borderless datatable datatable-table">
                 <thead>
                 <tr>
-                    <th>SKU</th>
-                    <th>Added By</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Description</th>
-                    <th>Created At</th>
-                    <th>Actions</th>
+                    <th>{{ __('keywords.sku') }}</th> <!-- SKU -->
+                    <th>{{ __('keywords.added_by') }}</th> <!-- Added By -->
+                    <th>{{ __('keywords.image') }}</th> <!-- Image -->
+                    <th>{{ __('keywords.product_name') }}</th> <!-- Product Name -->
+                    <th>{{ __('keywords.description') }}</th> <!-- Description -->
+                    <th>{{ __('keywords.created_at') }}</th> <!-- Created At -->
+                    <th>{{ __('keywords.actions') }}</th> <!-- Actions -->
                 </tr>
                 </thead>
                 <tbody>
@@ -22,12 +22,11 @@
                         <td>{{ $product['sku'] }}</td>
                         <td>{{ $product['user_name'] }}</td>
                         <td>
-                        @if(!empty($product['image']))
+                            @if(!empty($product['image']))
                                 <img src="{{ asset('images/'.$product['image'][0]['name']) }}" alt="Product Image" class="img-fluid w-50">
                             @else
-                                <p>No image available</p>
+                                <p>{{ __('keywords.no_image') }}</p> <!-- No image available -->
                             @endif
-                           {{-- {{ $product['image']}}--}}
                         </td>
                         <td>{{ $product['name'] }}</td>
                         <td>{{ $product['description'] }}</td>
@@ -36,16 +35,9 @@
                             <a href="{{ route('admin.products.edit', $product['id']) }}" class="btn btn-sm btn-primary rounded-circle m-1">
                                 <i class="bi bi-pen-fill text-white"></i>
                             </a>
-                            <a href="/delete-item?model_name=Products&id={{ $product['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1"> <i class="bi bi-trash3-fill text-white"></i></a>
-
-                            {{--<form action="{{ route('admin.delete.item') }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $product['id'] }}">
-                                <input type="hidden" name="model_name" value="Products">
-                                <button type="submit" class="btn btn-sm btn-danger rounded-circle m-1">
-                                    <i class="bi bi-trash3-fill text-white"></i>
-                                </button>
-                            </form>--}}
+                            <a href="/delete-item?model_name=Products&id={{ $product['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1">
+                                <i class="bi bi-trash3-fill text-white"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

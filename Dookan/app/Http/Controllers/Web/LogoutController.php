@@ -16,7 +16,7 @@ class LogoutController extends Controller
         if (auth()->check()) {
             auth()->logout();
         }
-        return redirect()->to('/auth/login');
+        return redirect()->route('products.index');
 
     }
 

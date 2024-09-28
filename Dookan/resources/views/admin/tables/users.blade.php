@@ -8,28 +8,28 @@
             <div class="row">
                 {{-- Role Filter --}}
                 <div class="col-md-4">
-                    <label for="role">Filter by Role:</label>
+                    <label for="role">{{ __('keywords.filter_by_role') }}</label> <!-- Filter by Role -->
                     <select name="role" id="role" class="form-control">
-                        <option value="">All Roles</option>
-                        <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                        <option value="seller" {{ request('role') == 'seller' ? 'selected' : '' }}>Seller</option>
-                        <option value="customer" {{ request('role') == 'customer' ? 'selected' : '' }}>Customer</option>
+                        <option value="">{{ __('keywords.all_roles') }}</option> <!-- All Roles -->
+                        <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>{{ __('keywords.admin') }}</option> <!-- Admin -->
+                        <option value="seller" {{ request('role') == 'seller' ? 'selected' : '' }}>{{ __('keywords.seller') }}</option> <!-- Seller -->
+                        <option value="customer" {{ request('role') == 'customer' ? 'selected' : '' }}>{{ __('keywords.customer') }}</option> <!-- Customer -->
                     </select>
                 </div>
 
                 {{-- Status Filter --}}
                 <div class="col-md-4">
-                    <label for="status">Filter by Status:</label>
+                    <label for="status">{{ __('keywords.filter_by_status') }}</label> <!-- Filter by Status -->
                     <select name="status" id="status" class="form-control">
-                        <option value="">All Statuses</option>
-                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                        <option value="">{{ __('keywords.all_statuses') }}</option> <!-- All Statuses -->
+                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>{{ __('keywords.active') }}</option> <!-- Active -->
+                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>{{ __('keywords.inactive') }}</option> <!-- Inactive -->
                     </select>
                 </div>
 
                 {{-- Filter Button --}}
                 <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary ms-auto w-75">Apply Filter</button>
+                    <button type="submit" class="btn btn-primary ms-auto w-75">{{ __('keywords.apply_filter') }}</button> <!-- Apply Filter -->
                 </div>
             </div>
         </form>
@@ -38,14 +38,14 @@
             <table id="Data_table" class="table table-striped table-borderless datatable datatable-table">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Profile Image</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Control</th>
+                    <th>{{ __('keywords.id') }}</th> <!-- ID -->
+                    <th>{{ __('keywords.name') }}</th> <!-- Name -->
+                    <th>{{ __('keywords.username') }}</th> <!-- Username -->
+                    <th>{{ __('keywords.profile_image') }}</th> <!-- Profile Image -->
+                    <th>{{ __('keywords.email') }}</th> <!-- Email -->
+                    <th>{{ __('keywords.role') }}</th> <!-- Role -->
+                    <th>{{ __('keywords.status') }}</th> <!-- Status -->
+                    <th>{{ __('keywords.actions') }}</th> <!-- Actions -->
                 </tr>
                 </thead>
                 <tbody>
@@ -70,9 +70,6 @@
                             <a href="{{ route('admin.users.edit', $user['id']) }}" class="btn btn-sm btn-primary rounded-circle m-1">
                                 <i class="bi bi-pen-fill text-white"></i>
                             </a>
-{{--
-                            <a href="{{ route('admin.users.destroy', $user['id']) }}" class="btn btn-sm btn-danger rounded-circle m-1"> <i class="bi bi-trash3-fill text-white"></i></a>
---}}
 
                             <form action="{{ route('admin.users.destroy', $user['id']) }}" method="POST" style="display:inline-block;">
                                 @csrf

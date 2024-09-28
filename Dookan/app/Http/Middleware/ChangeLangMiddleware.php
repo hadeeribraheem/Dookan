@@ -23,7 +23,7 @@ class ChangeLangMiddleware
             app()->setLocale(session('lang'));
         } else {
             app()->setLocale('en');
-        }
+        } //dd($request->url());
         return $next($request);
     }
 }

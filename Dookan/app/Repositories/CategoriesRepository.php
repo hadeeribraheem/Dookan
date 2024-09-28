@@ -36,25 +36,23 @@ class CategoriesRepository
          // duplicate category
          $duplicateCategory = $this->findByName($data['en_name']);
          if ($duplicateCategory&& !(isset($data['id']))) {
-             Flasher::addError('A category with this name already exists.');
+             Flasher::addError(__('keywords.category_exists_error'));
              return redirect()->back();
          }
          return $this->updateOrCreate($data, $data['id'] ?? null);
-        /* */
      }
 
      public function updateOrcreate($data, $id){
          $processedData = HandleDataBeforeSaveAction::handle($data);
-         //dd($processedData);
          $category = Categories::updateOrCreate(
              ['id' => $processedData['id'] ?? null],
              $processedData
          );
 
          if ($category->wasRecentlyCreated) {
-             Flasher::addSuccess('Category has been successfully added!');
+             Flasher::addSuccess(__('keywords.category_added_success'));
          } else {
-             Flasher::addSuccess('Category has been successfully updated!');
+             Flasher::addSuccess(__('keywords.category_updated_success'));
          }
 
          return $category;

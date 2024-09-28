@@ -32,11 +32,9 @@ class ProductFormRequest extends FormRequest
             'category_id'=> 'required',
             'quantity' => 'required|integer|min:1',
         ];
-
-        if ($this->getRequestUri() == '/products') {
+        if ($this->getRequestUri() == '/products'|| request()->is('api/products')) {
             $arr['images'] = 'required|array';
             $arr['images.*'] = 'required|mimes:jpeg,jpg,png,gif|max:2048';
-
         }
 
         return $arr;

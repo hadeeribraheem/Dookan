@@ -16,9 +16,6 @@ class RegisterController extends Controller
     }
 
     public function index(){
-        //return auth()->id();
-/*        app()->setLocale('ar');*/
-
         return view('auth.register');
     }
 
@@ -34,7 +31,7 @@ class RegisterController extends Controller
 
         $user = $this->userRegistrationService->registerNewUser($data, $file);
         //dd($user);
-        return redirect()->route('login')->with('success', 'User registered successfully!');
+        return redirect()->route('login')->with('success', __('keywords.user_created_successfully'));
 
     }
 

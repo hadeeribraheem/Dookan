@@ -40,6 +40,7 @@ class UserControllerResource extends Controller
             ->thenReturn()
             ->get();
 
+
         //dd($usersByRole);
         return view('admin.tables.users', compact('usersByRole'));
     }
@@ -69,7 +70,7 @@ class UserControllerResource extends Controller
 
         $this->userRegistrationService->registerNewUser($data, $file);
         //dd($user);
-        Flasher::addSuccess('User created successfully');
+        Flasher::addSuccess(__('keywords.user_create_success'));
         return redirect()->back();
     }
 
@@ -110,7 +111,7 @@ class UserControllerResource extends Controller
 
         $user = $this->userRegistrationService->updateExistingUser($data, $file, $user->id);
 
-        Flasher::addSuccess('User updated successfully');
+        Flasher::addSuccess(__('keywords.user_update_success'));
         return redirect()->back();
 
     }
@@ -120,7 +121,6 @@ class UserControllerResource extends Controller
      */
     public function destroy(string $id)
     {
-        // dd('test destroy user');
         $user = User::find($id);
         $user->delete();
         Flasher::addSuccess('User deleted successfully');

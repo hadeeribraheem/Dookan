@@ -22,6 +22,7 @@ class CategoryControllerResource extends Controller
 
     public function __construct(CategoriesRepository $categoryRepository)
     {
+        $this->middleware(['auth', 'role:seller,admin'])->except(['index', 'show']);
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -31,12 +32,7 @@ class CategoryControllerResource extends Controller
     public function index()
     {
         $data = $this->categoryRepository->getAllCategories();
-
-        /*$data = Categories::query()->orderBy('id','DESC')
-                                        ->get();*/
-
         $categories = CategoriesResource::collection($data)->resolve();
-        //dd($categories);
         return view('admin.tables.categories',  compact('categories'));
     }
 
@@ -47,23 +43,6 @@ class CategoryControllerResource extends Controller
     {
         return view('admin.insert_data.add_category');
     }
-
-    /* no need */
-    /*public function save($data)
-    {
-        $category = Categories::updateOrCreate(
-            ['id' => $data['id'] ?? null],
-            $data
-        );
-
-        if ($category->wasRecentlyCreated) {
-            Flasher::addSuccess('Category has been successfully added!');
-        } else {
-            Flasher::addSuccess('Category has been successfully updated!');
-        }
-
-        return redirect()->back();
-    }*/
 
     /**
      * Store a newly created resource in storage.
