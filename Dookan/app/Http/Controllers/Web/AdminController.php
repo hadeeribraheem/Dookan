@@ -31,9 +31,7 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-       // dd($request->url());
         return view('admin.auth.login');
-
     }
 
     public function save(LoginFormRequest $request)

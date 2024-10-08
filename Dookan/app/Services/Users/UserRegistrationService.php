@@ -40,14 +40,9 @@ class UserRegistrationService
                 }
             }
 
-            //dd($file);
-
-            // Resolve the image name based on whether it's a new user or update
             $image_name = $this->imageService->resolveImage($file, $user);
-            //dd($image_name);
             // Save the user using the repository (for create or update)
             $user = $this->registerRepository->saveUser($data, $id);
-
 
             // Save or update the user image
             ImageModalSave::make($user->id, 'User', $image_name);
@@ -59,7 +54,6 @@ class UserRegistrationService
 
     public function registerNewUser($data, $file = null)
     {
-        // Call the registerUser logic, passing null for ID to create a new user
         return $this->registerUser($data, $file);
     }
 

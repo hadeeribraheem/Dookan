@@ -39,5 +39,11 @@ class CategoryFormRequest extends FormRequest
         ];
         return HandleRulesValidation::handle($arr, $arr_lang);*/
     }
+    public function messages(): array
+    {
+        return [
+            'icon.required' => __('keywords.icon_required'),
+        ];
+    }
 
 }

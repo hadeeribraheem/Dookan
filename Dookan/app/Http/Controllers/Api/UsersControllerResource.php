@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Api;
 
 use App\Filters\RoleFilter;
 use App\Filters\StatusFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveUserInfoFormRequest;
 use App\Models\User;
+use App\Services\API\Messages;
 use App\Services\Users\UserRegistrationService;
-use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
 use Illuminate\Pipeline\Pipeline;
-use Illuminate\Support\Facades\DB;
 
-class UserControllerResource extends Controller
+class UsersControllerResource extends Controller
 {
     protected $userRegistrationService;
 
     public function __construct(UserRegistrationService $userRegistrationService)
     {
+        $this->middleware(['auth:sanctum', 'role:admin']);
         $this->userRegistrationService = $userRegistrationService;
     }
     /**
@@ -38,17 +38,7 @@ class UserControllerResource extends Controller
             ->thenReturn()
             ->get();
 
-        return view('admin.tables.users', compact('usersByRole'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $roles = ['admin', 'customer','seller'];
-        $statuses = ['active', 'inactive'];
-        return view('admin.insert_data.add_user', compact('roles', 'statuses'));
+        return $usersByRole;
     }
 
     /**
@@ -57,17 +47,15 @@ class UserControllerResource extends Controller
     public function store(SaveUserInfoFormRequest $request)
     {
         $data = $request->validated();
-        //dd($data);
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
         } else {
             $file = null;
         }
 
-        $this->userRegistrationService->registerNewUser($data, $file);
-        //dd($user);
-        Flasher::addSuccess(__('keywords.user_create_success'));
-        return redirect()->back();
+        $newUser = $this->userRegistrationService->registerNewUser($data, $file);
+        return Messages::success($newUser,__('keywords.user_create_success'));
     }
 
     /**
@@ -75,20 +63,7 @@ class UserControllerResource extends Controller
      */
     public function show(string $id)
     {
-        dd('test show user');
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $user = User::query()->find($id);
-        $roles = ['admin', 'customer','seller'];
-        $statuses = ['active', 'inactive'];
-        return view('admin.edit.edit_user', compact('user', 'roles', 'statuses'));
-
+        //
     }
 
     /**
@@ -96,18 +71,13 @@ class UserControllerResource extends Controller
      */
     public function update(SaveUserInfoFormRequest $request, string $id)
     {
-        //dd('test update user');
-
         $data = $request->all();
         $user = User::query()->find($id);
 
         $file = $request->hasFile('personal_image') ? $request->file('personal_image') : null;
 
         $user = $this->userRegistrationService->updateExistingUser($data, $file, $user->id);
-
-        Flasher::addSuccess(__('keywords.user_update_success'));
-        return redirect()->back();
-
+        return Messages::success($user,__('keywords.user_update_success'));
     }
 
     /**
@@ -115,9 +85,6 @@ class UserControllerResource extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::find($id);
-        $user->delete();
-        Flasher::addSuccess('User deleted successfully');
-        return redirect()->back();
+        //
     }
 }

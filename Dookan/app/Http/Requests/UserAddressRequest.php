@@ -43,4 +43,11 @@ class UserAddressRequest extends FormRequest
             'address_ar.regex' => __('keywords.address_ar_regex'),
         ];
     }
+    public function attributes()
+    {
+        return [
+            'address_en' => __('keywords.address_en'),
+            'address_ar' => __('keywords.address_ar'),
+        ];
+    }
 }

@@ -79,7 +79,9 @@ class CategoryControllerResource extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categoryById = $this->categoryRepository->getCategoryById($id);
+        $category = CategoriesResource::make($categoryById)->resolve();
+        //return $category;
     }
 
     /**

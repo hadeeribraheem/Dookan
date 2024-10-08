@@ -11,7 +11,7 @@ return[
     'phone' => 'Phone Number',
     'role' => 'User Role',
     'status' => 'Account Status',
-
+    'selected_address' => 'Selected address',
     /** END OF Saved User data **/
     /***************************************************/
 
@@ -47,6 +47,22 @@ return[
     'user_create_success' => 'User created successfully',
     'add_to_wishlist_success' => 'Added to wishlist.',
     'product_not_found'=>'Product not found',
+
+    'deleted_successfully'=>'Deleted successfully',
+    'icon_required' => 'The icon field is required.',
+    'user_updated_success' => 'User updated successfully!',
+    'user_update_failed' => 'Failed to update user.',
+    'unauthorized_action' => 'You are not authorized to perform this action.',
+    'wishlist_fetched_successfully' => 'Wishlist fetched successfully.',
+    'address_fetched_successfully' => 'Addresses fetched successfully.',
+
+    'address_en_required_without' => 'The English address is required if no address is selected.',
+    'address_ar_required_without' => 'The Arabic address is required if no address is selected.',
+
+    'cart_items' => 'cart items',
+    'cart_items.*.quantity' => 'item quantity',
+    'cart_items.*.price' => 'item price',
+    'logout_success' => 'You have been logged out successfully.',
     /*****************************************************/
 
     /*Success Messages*/
@@ -254,8 +270,8 @@ return[
     'select_saved_address' => 'Please select one of your saved addresses:',
     'address' => 'Address',
     'no_address' => "You don't have any addresses. Please add one.",
-    'address_en' => 'Address (English)',
-    'address_ar' => 'Address (Arabic)',
+    'address_en' => 'Address in (English)',
+    'address_ar' => 'Address in (Arabic)',
     'close' => 'Close',
     'submit_order' => 'Submit Order',
     /************************************************************************/

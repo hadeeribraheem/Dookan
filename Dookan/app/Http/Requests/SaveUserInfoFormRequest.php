@@ -28,7 +28,6 @@ class SaveUserInfoFormRequest extends FormRequest
         $UserIdForUpdate = $userId ?? $EdituserByadmin;
         //dd($EdituserByadmin);
         $rules = [
-
             'name'=> 'required|string|max:255|regex:/^[\pL\s]+$/u',
             'username' => 'required|string|min:5|max:20|unique:users',
             'email' => 'required|email|unique:users',

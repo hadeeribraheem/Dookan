@@ -25,4 +25,10 @@ class MainUserAddressRequest extends FormRequest
             'selected_address'=>'required',
         ];
     }
+    public function attributes()
+    {
+        return [
+            'selected_address' => __('keywords.selected_address'),
+        ];
+    }
 }

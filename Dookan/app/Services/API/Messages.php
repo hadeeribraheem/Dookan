@@ -15,6 +15,7 @@ class Messages
     // Method for returning error responses
     public static function error($msg = '', $status = 400)
     {
+        //dd($msg);
         return response()->json([
             'message' => $msg
         ], $status);

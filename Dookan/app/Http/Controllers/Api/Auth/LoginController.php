@@ -17,7 +17,6 @@ class LoginController extends Controller
     {
         $data = $request->validated();
         if (auth()->attempt($data)) {
-            //dd('here');
             $user = auth()->user()->load('image');
 
             $user['token'] = $user->createToken($user['phone'])->plainTextToken;

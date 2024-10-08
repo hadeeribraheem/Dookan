@@ -11,7 +11,6 @@ return[
     'phone' => 'رقم الهاتف',
     'role' => 'دور المستخدم',
     'status' => 'حالة الحساب',
-
     /** END OF Saved User data **/
     /********************************************************************/
 
@@ -31,7 +30,7 @@ return[
     'login_success' => 'لقد قمت بتسجيل الدخول بنجاح',
     'login_error' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة',
     'address_success' => 'تم إضافة العنوان بنجاح',
-    'address_default_success' => 'تم تحديد العنوان بنجاح كافتراضي',
+    'address_default_success' => 'تم تحديد العنوان الافتراضي بنجاح.',
     'unauthorized' => 'غير مصرح',
     'added_to_cart' => 'تمت الإضافة إلى السلة',
 
@@ -48,6 +47,21 @@ return[
     'user_create_success' => 'تم إنشاء المستخدم بنجاح',
     'add_to_wishlist_success' => 'تمت الإضافة إلى قائمة الأمنيات.',
 
+    'deleted_successfully'=>'تمت عملية الحذف بنجاح',
+
+    'icon_required' => 'حقل الرمز مطلوب.',
+    'user_updated_success' => 'تم تحديث المستخدم بنجاح!',
+    'user_update_failed' => 'فشل في تحديث المستخدم.',
+    'unauthorized_action' => 'أنت غير مصرح لك بتنفيذ هذا الإجراء.',
+    'wishlist_fetched_successfully' => 'تم جلب قائمة الرغبات بنجاح.',
+    'address_fetched_successfully' => 'تم جلب العناوين بنجاح.',
+    'address_en_required_without' => 'العنوان بالإنجليزية مطلوب إذا لم يتم اختيار عنوان.',
+    'address_ar_required_without' => 'العنوان بالعربية مطلوب إذا لم يتم اختيار عنوان.',
+
+    'cart_items' => 'عناصر السلة',
+    'cart_items.*.quantity' => 'كمية العنصر',
+    'cart_items.*.price' => 'سعر العنصر',
+    'logout_success' => 'تم تسجيل الخروج بنجاح.',
     /********************************************************************/
 
     /*Success Messages*/
@@ -299,6 +313,7 @@ return[
     'leave_blank_ar' => 'اتركه فارغاً إذا كنت لا ترغب في تغييره',
     'save_changes_ar' => 'حفظ التغييرات',
     /************************************************************************/
+    'selected_address' => 'العنوان المحدد',
     'address_en.required_without' => 'يرجى تقديم العنوان باللغة الإنجليزية إذا لم يتم تحديد أي عنوان آخر.',
     'address_ar.required_without' => 'يرجى تقديم العنوان باللغة العربية إذا لم يتم تحديد أي عنوان آخر.',
     'selected_address.exists' => 'العنوان المحدد غير صالح أو غير موجود.',

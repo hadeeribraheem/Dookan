@@ -15,7 +15,7 @@ class ApiProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $arr =  [
             'id' => $this->id,
             'status' => $this->status,
             'sku' => $this->sku,
@@ -33,5 +33,7 @@ class ApiProductResource extends JsonResource
             'quantity' => $this->quantity,
             'created_at' => $this->created_at->diffForHumans(),
         ];
+
+        return $arr;
     }
 }

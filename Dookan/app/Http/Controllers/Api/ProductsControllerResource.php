@@ -82,8 +82,12 @@ class ProductsControllerResource extends Controller
             Messages::error(__('keywords.product_update_error'));
         }
         DB::commit();
-        //dd('here');
-        Messages::success([], __('keywords.product_update_success'));
+        //dd((ApiProductResource::make($result)->resolve()));
+        return response()->json([
+            'message' =>  __('keywords.product_update_success'),
+            'data' => ApiProductResource::make($result)
+        ]);
+        //Messages::success(ApiProductResource::make($result)->resolve(), __('keywords.product_update_success'));
     }
 
     /**

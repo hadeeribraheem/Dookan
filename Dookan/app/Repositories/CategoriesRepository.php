@@ -3,7 +3,9 @@
 namespace App\Repositories;
 
 use App\Actions\HandleDataBeforeSaveAction;
+use App\Exceptions\DuplicateCategoryException;
 use App\Models\Categories;
+use App\Services\API\Messages;
 use App\Services\TranslationKeyJsonService;
 use App\Services\TranslationService;
 use Flasher\Laravel\Facade\Flasher;
@@ -17,13 +19,14 @@ class CategoriesRepository
             $this->translateservice = $translateservice;
      }
      public function getAllCategories(){
-            return Categories::query()->orderBy('id', 'DESC')->get();
+            return Categories::with('products')->orderBy('id', 'DESC')->get();
      }
      public function getCategoryById($id){
-         return Categories::query()->find($id);
+         return Categories::with('products')->find($id);
      }
      public function saveCategory($data)
      {
+
          // translations
          $nameTranslations = $this->translateservice->KeyMapTranslations($data['name']);
          $data['ar_name'] = $nameTranslations['ar'];
@@ -36,8 +39,8 @@ class CategoriesRepository
          // duplicate category
          $duplicateCategory = $this->findByName($data['en_name']);
          if ($duplicateCategory&& !(isset($data['id']))) {
-             Flasher::addError(__('keywords.category_exists_error'));
-             return redirect()->back();
+             throw new DuplicateCategoryException();
+
          }
          return $this->updateOrCreate($data, $data['id'] ?? null);
      }

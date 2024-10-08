@@ -44,4 +44,14 @@ class OrderRequest extends FormRequest
             'selected_address.exists' => __('keywords.selected_address_exists'),
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'cart_items' => __('keywords.cart_items'),
+            'cart_items.*.quantity' => __('keywords.cart_items.*.quantity'),
+            'cart_items.*.price' => __('keywords.cart_items.*.price'),
+        ];
+    }
+
 }

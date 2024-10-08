@@ -84,29 +84,3 @@ Route::get('/logout', [LogoutController::class, 'logout_system'])->name('logout'
 
 
 Route::get('/delete-item', DeleteController::class)->name('delete.item');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*// Product Management (similar to users)
-Route::get('/products', [AdminController::class, 'products'])->name('products');
-Route::get('/products/create', [AdminController::class, 'createProduct'])->name('products.create');
-Route::post('/products', [AdminController::class, 'storeProduct'])->name('products.store');
-Route::get('/products/{id}/edit', [AdminController::class, 'editProduct'])->name('products.edit');
-Route::put('/products/{id}', [AdminController::class, 'updateProduct'])->name('products.update');
-Route::delete('/products/{id}', [AdminController::class, 'deleteProduct'])->name('products.delete');
-
-// Order Management (similar to users)
-Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
-Route::delete('/orders/{id}', [AdminController::class, 'deleteOrder'])->name('orders.delete');*/
