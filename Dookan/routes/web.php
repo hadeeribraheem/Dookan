@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\LogoutController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\ProductsControllerResource;
 use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\SellerController;
 use App\Http\Controllers\Web\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'changeLang'], function () {
 
     Route::resource('products', ProductsControllerResource::class)->only(['index', 'show']);
+    Route::resource('categoriesdata', CategoryControllerResource::class)->only(['index', 'show']);
+    Route::get('/vendors',[SellerController::class, 'getSellers'])->name('sellers');
+    //seller products
+    Route::get('vendor/{vendorID}/products', [SellerController::class, 'getProductsBySellerID'])->name('vendor.show');
 
     Route::middleware(['guest'])->group(function () {
         Route::group(['prefix' => 'auth'], function () {
@@ -74,6 +79,8 @@ Route::group(['middleware' => 'changeLang'], function () {
         Route::post('/profile/address/select', [AddressController::class, 'select'])->name('address.select');
 
         Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+
 
     });
 

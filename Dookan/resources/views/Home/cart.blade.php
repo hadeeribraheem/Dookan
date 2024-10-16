@@ -57,7 +57,7 @@
                             @endforeach
 
                             <div class="back-to-shop mt-3">
-                                <a href="{{route('products.index')}}">&leftarrow; <span class="text-muted">{{ __('keywords.back_to_shop') }}</span></a>
+                                <a href="{{route('products.index', ['lang' => app()->getLocale()])}}">&leftarrow; <span class="text-muted">{{ __('keywords.back_to_shop') }}</span></a>
                             </div>
                         </div>
 

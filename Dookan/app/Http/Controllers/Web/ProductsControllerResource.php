@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductFormRequest;
 use App\Http\Resources\CategoriesResource;
 use App\Http\Resources\ProductsResource;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Products;
 use App\Repositories\ProductsRepository;
 use App\Services\TranslationKeyJsonService;
@@ -55,7 +55,7 @@ class ProductsControllerResource extends Controller
     {
        // dd(auth()->user());
 
-        $data = Categories::all();
+        $data = Category::all();
         $categories = CategoriesResource::collection($data)->resolve();
         //dd($categories);
         if (auth()->user()->role === 'seller') {
@@ -145,7 +145,7 @@ class ProductsControllerResource extends Controller
      */
     public function edit(string $id)
     {
-        $data = Categories::all();
+        $data = Category::all();
         $categories = CategoriesResource::collection($data)->resolve();
 
         $productToEdit = $this->productRepository->getProductById($id);

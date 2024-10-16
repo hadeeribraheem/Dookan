@@ -14,7 +14,7 @@ class Products extends Model
 
     public function category()
     {
-        return $this->belongsTo(Categories::class,'category_id')->withTrashed();
+        return $this->belongsTo(Category::class,'category_id')->withTrashed();
     }
 
     public function images()

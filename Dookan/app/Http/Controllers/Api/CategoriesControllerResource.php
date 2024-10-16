@@ -46,6 +46,8 @@ class CategoriesControllerResource extends Controller
     {
         $categoryById = $this->categoryRepository->getCategoryById($id);
         $category = CategoriesResource::make($categoryById)->resolve();
+        //dd($category['products']);
+
         return $category;
     }
 

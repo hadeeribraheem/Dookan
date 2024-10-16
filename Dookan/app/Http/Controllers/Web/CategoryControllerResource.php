@@ -6,7 +6,7 @@ use App\Actions\HandleDataBeforeSaveAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryFormRequest;
 use App\Http\Resources\CategoriesResource;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Repositories\CategoriesRepository;
 use App\Services\TranslationKeyJsonService;
 use App\Services\TranslationService;
@@ -33,7 +33,14 @@ class CategoryControllerResource extends Controller
     {
         $data = $this->categoryRepository->getAllCategories();
         $categories = CategoriesResource::collection($data)->resolve();
-        return view('admin.tables.categories',  compact('categories'));
+       // dd($categories[2]['products']);
+        if (auth()->check()) {
+            if (auth()->user()->role === 'admin') {
+                return view('admin.tables.categories',  compact('categories'));
+            }
+        }
+        return view('Home.all_categories',  compact('categories'));
+
     }
 
     /**
@@ -61,7 +68,7 @@ class CategoryControllerResource extends Controller
         $data['en_description'] = $descriptionTranslations['en'];
 
 
-        $duplicateCategory = Categories::where('name->en', $data['en_name'])->first();
+        $duplicateCategory = Category::where('name->en', $data['en_name'])->first();
 
         if ($duplicateCategory) {
             return redirect()->back()->withErrors(['name' => 'A category with this name already exists.']);
@@ -80,8 +87,9 @@ class CategoryControllerResource extends Controller
     public function show(string $id)
     {
         $categoryById = $this->categoryRepository->getCategoryById($id);
+        //dd($categoryById->products);
         $category = CategoriesResource::make($categoryById)->resolve();
-        //return $category;
+        return view('Home.show_category', compact('category'));
     }
 
     /**

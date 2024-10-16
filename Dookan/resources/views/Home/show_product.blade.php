@@ -67,7 +67,7 @@
                             </button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_wishlist') }}" style=" border: none;">
+                        <a href="{{ route('login', ['lang' => app()->getLocale()]) }}" class="icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_wishlist') }}" style=" border: none;">
                             <i class="fa-solid fa-heart"></i>
                         </a>
                     @endauth

@@ -20,9 +20,9 @@
 
             <div class="col-md-2 text-right d-none d-md-flex justify-content-end">
                 <div class="header-icons">
-                    <a href="{{ route('profile') }}"><i class="fas fa-user"></i></a>
-                    <a href="{{ route('wishlist.index') }}"><i class="fas fa-heart"></i></a>
-                    <a href="{{ route('cart.index') }}"><i class="fas fa-shopping-bag"></i></a>
+                    <a href="{{ route('profile', ['lang' => app()->getLocale()]) }}"><i class="fas fa-user"></i></a>
+                    <a href="{{ route('wishlist.index', ['lang' => app()->getLocale()]) }}"><i class="fas fa-heart"></i></a>
+                    <a href="{{ route('cart.index', ['lang' => app()->getLocale()]) }}"><i class="fas fa-shopping-bag"></i></a>
                 </div>
             </div>
         </div>

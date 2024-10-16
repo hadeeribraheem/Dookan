@@ -25,7 +25,6 @@ class ApiProductResource extends JsonResource
             'category_name' => $this->whenLoaded('category', function () {
                 return DisplayDataWithCurrentLang::display($this->category->name);
             }),
-            // collection of image
             'image' => ImageResource::collection($this->whenLoaded('images')),
             'name' => DisplayDataWithCurrentLang::display($this->name),
             'description' => DisplayDataWithCurrentLang::display($this->description),
@@ -33,6 +32,7 @@ class ApiProductResource extends JsonResource
             'quantity' => $this->quantity,
             'created_at' => $this->created_at->diffForHumans(),
         ];
+        // dd($arr);
 
         return $arr;
     }

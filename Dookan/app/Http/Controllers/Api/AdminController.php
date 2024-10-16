@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginFormRequest;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Products;
 use App\Models\User;
@@ -20,7 +20,7 @@ class AdminController extends Controller
         $sellerCount = User::where('role', 'seller')->count();
         $customerCount = User::where('role', 'customer')->count();
 
-        $categoryCount = Categories::count();
+        $categoryCount = Category::count();
         $productCount = Products::count();
 
         //$orderCount = Order::count();

@@ -120,4 +120,5 @@ class UserControllerResource extends Controller
         Flasher::addSuccess('User deleted successfully');
         return redirect()->back();
     }
+
 }

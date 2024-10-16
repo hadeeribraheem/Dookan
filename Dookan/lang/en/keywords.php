@@ -78,7 +78,7 @@ return[
     'total_admins' => 'Total Admins',
     'total_sellers' => 'Total Sellers',
     'total_users' => 'Total Users',
-    'total_categories' => 'Total Categories',
+    'total_categories' => 'Total Category',
     'total_products' => 'Total Products',
     'total_orders' => 'Total Orders',
     /************************************************************************/
@@ -171,7 +171,7 @@ return[
     'forms' => 'Forms',
     'tables' => 'Tables',
     'show_users' => 'Show Users',
-    'show_categories' => 'Show Categories',
+    'show_categories' => 'Show Category',
     'show_products' => 'Show Products',
     'pages' => 'Pages',
     'profile' => 'Profile',
@@ -246,9 +246,9 @@ return[
     'product_hover_image_alt' => 'Hover image of :name',
     'show_product' => 'Show :name',
     'add_to_wishlist' => 'Add :name to Wishlist',
-    'login_to_add_wishlist' => 'Please login to add to wishlist',
+    'login_to_add_wishlist' => 'Please login to add this item to wishlist',
     'add_to_cart' => 'Add :name to Cart',
-    'login_to_add_cart' => 'Please login to add to cart',
+    'login_to_add_cart' => 'Please login to add this item to cart',
     /************************************************************************/
     'thumbnail_image_alt' => 'Thumbnail image of :name',
     'in_stock' => 'In Stock',
@@ -292,4 +292,11 @@ return[
     'address_ar.required_without' => 'Please provide an Arabic address if no other address is selected.',
     'selected_address.exists' => 'The chosen address is invalid or does not exist.',
     /************************************************************************/
+    /** all vendors page **/
+    'our_vendors' => 'Our Vendors',
+    'welcome_message' => 'Welcome to our comprehensive list of trusted vendors!',
+    /** all Categories page **/
+    'our_categories' => 'Our Categories',
+    'categories_welcome_message' => 'Welcome to our comprehensive list of categories!',
+
 ];

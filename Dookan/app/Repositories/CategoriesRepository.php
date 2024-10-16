@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Actions\HandleDataBeforeSaveAction;
 use App\Exceptions\DuplicateCategoryException;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Services\API\Messages;
 use App\Services\TranslationKeyJsonService;
 use App\Services\TranslationService;
@@ -19,10 +19,10 @@ class CategoriesRepository
             $this->translateservice = $translateservice;
      }
      public function getAllCategories(){
-            return Categories::with('products')->orderBy('id', 'DESC')->get();
+            return Category::with('products')->orderBy('id', 'DESC')->get();
      }
      public function getCategoryById($id){
-         return Categories::with('products')->find($id);
+         return Category::with('products.images')->find($id);
      }
      public function saveCategory($data)
      {
@@ -47,7 +47,7 @@ class CategoriesRepository
 
      public function updateOrcreate($data, $id){
          $processedData = HandleDataBeforeSaveAction::handle($data);
-         $category = Categories::updateOrCreate(
+         $category = Category::updateOrCreate(
              ['id' => $processedData['id'] ?? null],
              $processedData
          );
@@ -62,7 +62,7 @@ class CategoriesRepository
      }
     public function findByName($name)
     {
-        return Categories::where('name->en', $name)
+        return Category::where('name->en', $name)
             ->orWhere('name->ar', $name)
             ->first();
     }

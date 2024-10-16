@@ -20,14 +20,10 @@ class CategoriesResource extends JsonResource
             'name' => DisplayDataWithCurrentLang::display($this->name),
             'description' => DisplayDataWithCurrentLang::display($this->description),
             'icon'=>$this->icon,
-            'products'=> ApiProductResource::collection($this->whenLoaded('products')),
+            'products'=>ApiProductResource::collection($this->whenLoaded('products')),
+            //'products'=>$this->whenLoaded('products'),
             'created_at' => $this->created_at->diffForHumans(),
             ];
-        if (request()->hasHeader('lang')&& request()->header('lang') !='all'){
-            $arr['name'] = DisplayDataWithCurrentLang::display($this->name);
-            $arr ['description'] = DisplayDataWithCurrentLang::display($this->description);
-        }
-
         return $arr;
     }
 }

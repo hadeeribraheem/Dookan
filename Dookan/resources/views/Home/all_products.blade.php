@@ -11,7 +11,7 @@
                 @foreach($productsResource as $product)
                     <!-- product card -->
                     <div class="col-lg-3 col-sm-2 col-12 mb-3">
-                        <a href="{{ route('products.show', $product['id']) }}" class="product-card-link">
+                        <a href="{{ route('products.show', ['product' => $product['id'], 'lang' => app()->getLocale()]) }}" class="product-card-link">
                             <div class="product-card">
                                 <div class="product-image">
                                     <!-- Main image -->
@@ -25,12 +25,12 @@
                                     @endif
 
                                     <div class="product-icons d-flex flex-column">
-                                        <a href="{{ route('products.show', $product['id']) }}" class="icon view" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.show_product', ['name' => $product['name']]) }}">
+                                        <a href="{{ route('products.show', ['product' => $product['id'], 'lang' => app()->getLocale()]) }}" class="icon view" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.show_product', ['name' => $product['name']]) }}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
 
                                         @auth
-                                            <form action="{{ route('wishlist.store') }}" method="POST" style="display: inline-block; margin: 0 !important;">
+                                            <form action="{{ route('wishlist.store', ['lang' => app()->getLocale()]) }}" method="POST" style="display: inline-block; margin: 0 !important;">
                                                 @csrf
                                                 <input type="hidden" name="product_id" value="{{ $product['id'] }}">
                                                 <button type="submit" class="icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.add_to_wishlist', ['name' => $product['name']]) }}" style=" border: none;">
@@ -38,7 +38,7 @@
                                                 </button>
                                             </form>
                                         @else
-                                            <a href="{{ route('login') }}" class="icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_wishlist') }}" style=" border: none;">
+                                            <a href="{{ route('login', ['lang' => app()->getLocale()]) }}" class="icon wishlist" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_wishlist') }}" style=" border: none;">
                                                 <i class="fa-solid fa-heart"></i>
                                             </a>
                                         @endauth
@@ -53,7 +53,7 @@
                                                 </button>
                                             </form>
                                         @else
-                                            <a href="{{ route('login') }}" class="icon" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_cart') }}">
+                                            <a href="{{ route('login', ['lang' => app()->getLocale()]) }}" class="icon" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('keywords.login_to_add_cart') }}">
                                                 <i class="fa-solid fa-cart-shopping"></i>
                                             </a>
                                         @endauth

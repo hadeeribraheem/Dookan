@@ -1,29 +1,28 @@
 <!-- Sticky Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
     <div class="container">
-        <!-- Sidebar Toggle (only for mobile) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Navbar Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav {{ app()->getLocale() === 'ar' ? 'ms-auto' : 'me-auto' }}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('keywords.vendors') }}</a>
+                    <a class="nav-link" href="{{route('sellers', ['lang' => app()->getLocale()])}}">{{ __('keywords.vendors') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('keywords.categories') }}</a>
+                    <a class="nav-link" href="{{route('categoriesdata.index', ['lang' => app()->getLocale()])}}">{{ __('keywords.categories') }}</a>
                 </li>
             </ul>
 
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav {{ app()->getLocale() === 'ar' ? 'me-auto' : 'ms-auto' }}">
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('keywords.contact_us') }}</a>
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('keywords.login') }}</a>
+                        <a class="nav-link" href="{{ route('login', ['lang' => app()->getLocale()]) }}">{{ __('keywords.login') }}</a>
                     </li>
                 @endguest
                 @auth
