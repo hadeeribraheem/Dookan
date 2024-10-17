@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-12 col-md-2">
                 <div class="logo">
-                    <a class="company_logo" href="{{ route('products.index') }}">
+                    <a class="company_logo" href="{{ route('products.index', ['lang' => app()->getLocale()]) }}">
                         <img src="{{ asset('images/logos/Dookan_logo.png') }}" alt="{{ __('keywords.logo_alt') }}" class="img-fluid w-50">
                     </a>
                 </div>

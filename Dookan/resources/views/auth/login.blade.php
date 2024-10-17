@@ -17,9 +17,9 @@
                 </a>
                 <!-- Form Section -->
                 <div class="col-md-6 login-form-section p-5">
-                    <h3 class="card-title mb-4">{{ __('keywords.login') }}</h3> <!-- Translated "Login" -->
+                    <h3 class="card-title mb-4">{{ __('keywords.login') }}</h3>
 
-                    <form method="POST" action="{{ route('auth.login') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('auth.login', ['lang' => app()->getLocale()]) }}" enctype="multipart/form-data">
                         @csrf
                         @if (Session::has('success'))
                             <div class="alert alert-success">
@@ -43,13 +43,13 @@
                         @endif
                         <button type="submit" class="btn btn-primary w-100 mb-3">{{ __('keywords.login') }}</button> <!-- Translated "Login" button -->
                         <p><a href="#">{{ __('keywords.forgot_password') }}</a></p> <!-- Translated "Forgot Password" -->
-                        <p>{{ __('keywords.no_account') }} <a href="{{ route('register') }}">{{ __('keywords.sign_up') }}</a></p> <!-- Translated "Don't have an account? Sign Up" -->
+                        <p>{{ __('keywords.no_account') }} <a href="{{ route('register', ['lang' => app()->getLocale()]) }}">{{ __('keywords.sign_up') }}</a></p>
                     </form>
                 </div>
 
                 <!-- Illustration Section -->
                 <div class="col-md-6 d-flex justify-content-center align-items-center p-5">
-                    <img src="{{ asset('images/designs/loginpage.svg') }}" alt="{{ __('keywords.login_illustration_alt') }}" class="login-illustration img-fluid"> <!-- Translated alt text -->
+                    <img src="{{ asset('images/designs/loginpage.svg') }}" alt="{{ __('keywords.login_illustration_alt') }}" class="login-illustration img-fluid">
                 </div>
             </div>
         </div>

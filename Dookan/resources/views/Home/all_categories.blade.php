@@ -14,7 +14,7 @@
             @else
                 @foreach($categories as $category)
                     <div class="col-lg-4">
-                        <a href="{{ route('categoriesdata.show', $category['id'], ['lang' => app()->getLocale()]) }}" class="product-card-link">
+                        <a href="{{ route('categoriesdata.show', ['categoriesdatum' => $category['id'], 'lang' => app()->getLocale()]) }}" class="product-card-link">
                             <div class="icon_box">
                                 <i class="{{ $category['icon'] }}"></i>
                                 <h3>{{ $category['name'] }}</h3>

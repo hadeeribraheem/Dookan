@@ -703,6 +703,10 @@ a.sidebar-link:hover {
     transform: rotate(45deg);
     transition: all .2s ease-out;
 }
+html[dir="rtl"] .sidebar-link i {
+    font-size: 1.1rem;
+    margin-left: .75rem;
+}
 /*-- end of side bar --*/
 /*******************************************************/
 /** profile form **/
@@ -795,6 +799,25 @@ a.sidebar-link:hover {
     font-size: 12px;
     font-style: italic;
     margin: 5px;
+}
+html[dir="rtl"] .section-body {
+    margin-right: 4.5rem;
+    margin-left: auto;
+}
+
+html[dir="rtl"] .card-footer, html[dir="rtl"] .address-card-footer {
+    text-align: right;
+}
+
+html[dir="rtl"] .form-group > label {
+    text-align: right;
+}
+
+/* Mirror placements for RTL */
+html[dir="rtl"] .section .section-title:before {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px;
 }
 
 /*******************************************************/

@@ -50,7 +50,7 @@
                                                         <strong>{{ __('keywords.address') }}</strong> {{ $address['address'] }}<br>
                                                     </label>
                                                 </div>
-                                                <div class="ms-4">
+                                                <div class="{{ app()->getLocale() === 'ar' ? 'me-4' : 'ms-4' }} ">
                                                     <a href="/delete-item?model_name=UserAddress&id={{ $address['id'] }}" class="trash-icon">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>

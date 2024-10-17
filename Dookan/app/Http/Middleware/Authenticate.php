@@ -13,13 +13,13 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        //dd('Redirect triggered');
+        $lang = $request->query('lang', 'en');
 
         // return $request->expectsJson() ? null : route('login');
         if (! $request->expectsJson()) {
-            Flasher::addWarning('Please login to continue');
+            Flasher::addWarning(__('keywords.please_login'));
             //return redirect()->route('login')->with('message', 'Please login to continue');
-            return route('login');
+            return route('login', ['lang' => $lang]);
         }
         return null;
     }

@@ -31,7 +31,7 @@ class RegisterController extends Controller
 
         $user = $this->userRegistrationService->registerNewUser($data, $file);
         //dd($user);
-        return redirect()->route('login')->with('success', __('keywords.user_created_successfully'));
+        return redirect()->route('login', ['lang' => app()->getLocale()])->with('success', __('keywords.user_created_successfully'));
 
     }
 

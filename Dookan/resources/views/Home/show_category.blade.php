@@ -11,8 +11,10 @@
                     <img src="{{ asset('images/no_data.svg') }}" alt="{{ __('keywords.no_products_image_alt') }}" class="img-fluid">
                 </div>
             @else
-                <h2>{{ $category['name'] }}</h2>
-                <p>{{ $category['description'] }}</p>
+                <div class="category-header mb-4">
+                    <h1>{{ $category['name'] }}</h1>
+                    <p class="ms-3 ">{{ $category['description'] }}</p><hr><br>
+                </div>
 
                 <div class="row">
                     @if($category['products']->isEmpty())
@@ -24,7 +26,7 @@
                         @foreach($category['products'] as $product)
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                                 <div class="card product-card">
-                                    <a href="{{ route('products.show', $product['id'], ['lang' => app()->getLocale()]) }}" class="product-card-link">
+                                    <a href="{{ route('products.show' ,['product'=>$product['id'],'lang' => app()->getLocale()]) }}" class="product-card-link">
                                         <div class="product-card">
                                             <div class="product-image">
                                                 <!-- Main image -->

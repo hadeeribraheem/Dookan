@@ -24,11 +24,11 @@ class LoginController extends Controller
 
             if ($user->role === 'seller')
             {
-                return redirect()->route('seller.profile');
+                return redirect()->route('seller.profile', ['lang' => app()->getLocale()]);
             }
             else
             {
-                return redirect()->route('products.index');
+                return redirect()->route('products.index', ['lang' => app()->getLocale()]);
 
             }
         }

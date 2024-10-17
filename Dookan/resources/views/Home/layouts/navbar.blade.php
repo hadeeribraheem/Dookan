@@ -27,7 +27,7 @@
                 @endguest
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">{{ __('keywords.logout') }}</a>
+                        <a class="nav-link" href="{{ route('logout', ['lang' => app()->getLocale()]) }}">{{ __('keywords.logout') }}</a>
                     </li>
                 @endauth
                 <li class="nav-item">

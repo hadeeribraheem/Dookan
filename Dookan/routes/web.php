@@ -83,11 +83,11 @@ Route::group(['middleware' => 'changeLang'], function () {
 
 
     });
+    Route::get('/logout', [LogoutController::class, 'logout_system'])->name('logout');
 
 });
 
 
-Route::get('/logout', [LogoutController::class, 'logout_system'])->name('logout');
 
 
 Route::get('/delete-item', DeleteController::class)->name('delete.item');

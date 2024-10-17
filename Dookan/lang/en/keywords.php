@@ -63,6 +63,8 @@ return[
     'cart_items.*.quantity' => 'item quantity',
     'cart_items.*.price' => 'item price',
     'logout_success' => 'You have been logged out successfully.',
+
+    'please_login' => 'Please login to continue',
     /*****************************************************/
 
     /*Success Messages*/

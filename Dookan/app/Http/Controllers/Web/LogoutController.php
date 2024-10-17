@@ -16,7 +16,8 @@ class LogoutController extends Controller
         if (auth()->check()) {
             auth()->logout();
         }
-        return redirect()->route('products.index');
+        //dd(app()->getLocale());
+        return redirect()->route('products.index', ['lang' => app()->getLocale()]);
 
     }
 
