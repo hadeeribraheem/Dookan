@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Actions\DisplayDataWithCurrentLang;
+use App\Http\Resources\ApiProductResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

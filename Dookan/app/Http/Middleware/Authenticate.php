@@ -14,7 +14,7 @@ class Authenticate extends Middleware
     protected function redirectTo(Request $request): ?string
     {
         $lang = $request->query('lang', 'en');
-
+        app()->setLocale($lang);
         // return $request->expectsJson() ? null : route('login');
         if (! $request->expectsJson()) {
             Flasher::addWarning(__('keywords.please_login'));

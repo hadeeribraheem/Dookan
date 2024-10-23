@@ -68,6 +68,9 @@ return[
     /*****************************************************/
 
     /*Success Messages*/
+    'our_products' => 'Our Products',
+    'all_products_message' => 'Explore our diverse range of products.',
+
     'user_created_successfully' => 'User created successfully',
     /*Roles*/
     'welcome_seller' => 'Welcome again, seller :name!!',

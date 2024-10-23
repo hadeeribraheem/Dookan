@@ -10,12 +10,17 @@
             </div>
 
             <div class="col-md-8 d-none d-md-flex">
-                <div class="search-bar w-100 d-flex">
-                    <input type="text" class="form-control search-input" placeholder="{{ __('keywords.search_placeholder') }}">
+                {{--<input type="text" class="form-control search-input" placeholder="{{ __('keywords.search_placeholder') }}">
                     <button class="search-btn">
                         <i class="fas fa-search"></i>
-                    </button>
-                </div>
+                    </button>--}}
+                    <form action="{{ route('search', ['lang' => app()->getLocale()]) }}" method="GET" class="search-bar w-100 d-flex">
+                        <input type="text" name="query" class="form-control search-input" placeholder="{{ __('keywords.search_placeholder') }}">
+                        <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
             </div>
 
             <div class="col-md-2 text-right d-none d-md-flex justify-content-end">

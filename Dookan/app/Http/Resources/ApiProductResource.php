@@ -25,7 +25,7 @@ class ApiProductResource extends JsonResource
             'category_name' => $this->whenLoaded('category', function () {
                 return DisplayDataWithCurrentLang::display($this->category->name);
             }),
-            'image' => ImageResource::collection($this->whenLoaded('images')),
+            'image' => ImageResource::collection($this->whenLoaded('images'))->toArray($request),
             'name' => DisplayDataWithCurrentLang::display($this->name),
             'description' => DisplayDataWithCurrentLang::display($this->description),
             'price' => $this->price,

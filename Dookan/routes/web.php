@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\LogoutController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\ProductsControllerResource;
 use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\SearchController;
 use App\Http\Controllers\Web\SellerController;
 use App\Http\Controllers\Web\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'changeLang'], function () {
     Route::get('/vendors',[SellerController::class, 'getSellers'])->name('sellers');
     //seller products
     Route::get('vendor/{vendorID}/products', [SellerController::class, 'getProductsBySellerID'])->name('vendor.show');
+    Route::get('/search', [SearchController::class, 'index'])->name('search');
 
     Route::middleware(['guest'])->group(function () {
         Route::group(['prefix' => 'auth'], function () {
@@ -79,6 +81,8 @@ Route::group(['middleware' => 'changeLang'], function () {
         Route::post('/profile/address/select', [AddressController::class, 'select'])->name('address.select');
 
         Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+        Route::get('/orders/all', [OrderController::class, 'index'])->name('order.index');
+
 
 
 

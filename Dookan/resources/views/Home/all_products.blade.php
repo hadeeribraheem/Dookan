@@ -8,6 +8,11 @@
                     <img src="{{ asset('images/no_data.svg') }}" alt="{{ __('keywords.no_products_image_alt') }}" class="img-fluid ">
                 </div>
             @else
+                <div class="category-header mb-4 mt-4">
+                    <h1>{{ __('keywords.our_products') }}</h1>
+                    <p class="ms-3">{{ __('keywords.all_products_message') }}</p>
+                    <hr><br>
+                </div>
                 @foreach($productsResource as $product)
                     <!-- product card -->
                     <div class="col-lg-3 col-sm-2 col-12 mb-3">

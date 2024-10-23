@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Actions\DisplayDataWithCurrentLang;
+use App\Http\Resources\ImageResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,4 +31,5 @@ class Products extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
 }

@@ -10,6 +10,7 @@ class LoginController extends Controller
 {
     public function index()
     {
+       // dd('here');
         return view('auth.login'); // Show the login view
     }
 

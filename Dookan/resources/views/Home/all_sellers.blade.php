@@ -15,7 +15,7 @@
             @else
                 @foreach ($sellers as $vendor)
                     <div class="col-lg-3 col-sm-12 mb-4 ">
-                        <a href="{{ route('vendor.show', $vendor->id, ['lang' => app()->getLocale()]) }}">
+                        <a href="{{ route('vendor.show',['vendorID'=>$vendor->id, 'lang' => app()->getLocale()]) }}">
                             <div class="card vendor-card ">
                                 @if($vendor['image'])
                                     <img src="{{ asset('images/'. $vendor['image']['name']) }}" alt="User Image" class="rounded-circle " >

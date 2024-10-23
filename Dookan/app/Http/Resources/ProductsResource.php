@@ -15,6 +15,7 @@ class ProductsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         $arr = [
             'id' => $this->id,
             'status'=> $this->status,
@@ -40,7 +41,7 @@ class ProductsResource extends JsonResource
             $arr['name'] = DisplayDataWithCurrentLang::display($this->name);
             $arr ['description'] = DisplayDataWithCurrentLang::display($this->description);
         }
-
+       // dd($arr);
         return $arr;
     }
 }
