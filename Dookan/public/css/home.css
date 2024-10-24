@@ -957,3 +957,27 @@ html[dir="rtl"] .category-header p{
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
 }
+/*******************************************************/
+/** all orders page **/
+.order-card{
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    padding: 15px;
+}
+.order-card .card-title{
+    color: #01161e;
+    font-weight: 500;
+    font-family: var(--roboto-font);
+}
+.order-card p>strong{
+    color: #0b2545;
+    margin: 3px;
+}
+.btn-outline-dark:hover {
+    color: #fff;
+    background-color: #147398 !important;
+    border-color: #147398 !important;
+}
+.order-card td{
+    vertical-align: middle;
+    padding: 5px;
+}

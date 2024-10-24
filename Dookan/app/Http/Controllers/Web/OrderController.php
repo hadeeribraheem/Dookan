@@ -98,4 +98,17 @@ class OrderController extends Controller
         return redirect()->route('products.index');
     }
 
+    public function cancelOrder($orderId)
+    {
+        $order = Order::find($orderId);
+
+        if ($order && $order->status === 'Pending') {
+            $order->delete();
+            session()->flash('success', __('keywords.order_cancel_success'));
+        } else {
+            session()->flash('error', __('keywords.order_cancel_fail'));
+        }
+
+        return redirect()->back();
+    }
 }

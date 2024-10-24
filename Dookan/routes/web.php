@@ -82,6 +82,7 @@ Route::group(['middleware' => 'changeLang'], function () {
 
         Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
         Route::get('/orders/all', [OrderController::class, 'index'])->name('order.index');
+        Route::delete('/orders/{orderId}/cancel', [OrderController::class, 'cancelOrder'])->name('order.cancel');
 
 
 

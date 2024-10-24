@@ -65,6 +65,11 @@ return[
     'logout_success' => 'You have been logged out successfully.',
 
     'please_login' => 'Please login to continue',
+    'order_history' => 'Order History',
+    'manage_order' => 'Here you can manage your order',
+
+    'order_cancel_success' => 'Order canceled successfully.',
+    'order_cancel_fail' => 'Order cannot be canceled as it has already been shipped.',
     /*****************************************************/
 
     /*Success Messages*/
