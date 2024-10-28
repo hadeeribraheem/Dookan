@@ -30,3 +30,4 @@ Route::resources([
 /*Route::resource('products', ProductsControllerResource::class);
 //    'categories' => CategoryControllerResource::class,
 Route::resource('categories',CategoryControllerResource::class);*/
+Route::post('/category/restore', [AdminController::class, 'restore'])->name('category.restore');

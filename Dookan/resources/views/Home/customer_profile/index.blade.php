@@ -3,6 +3,7 @@
 @section('sidebar')
     @include('Home.customer_profile.sidebar')
 @endsection
+@section('title', __('keywords.profile_title'))
 
 @section('content')
 

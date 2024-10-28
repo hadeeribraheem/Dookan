@@ -1,4 +1,5 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.categories_title'))
 @section('content')
     <div class="container mt-5">
         <div class="category-header mb-4">

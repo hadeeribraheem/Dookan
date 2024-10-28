@@ -1,4 +1,5 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.sellers_title'))
 @section('content')
     <div class="container vendor-products  mt-5">
         <div class="vendor-header mb-4">

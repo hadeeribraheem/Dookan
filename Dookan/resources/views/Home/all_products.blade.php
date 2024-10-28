@@ -1,4 +1,5 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.home_title'))
 @section('content')
     <div class="container mt-5">
         <div class="row">
@@ -21,12 +22,12 @@
                                 <div class="product-image">
                                     <!-- Main image -->
                                     @if(isset($product['image'][0]))
-                                        <img src="{{ asset('images/' . $product['image'][0]['name']) }}" class="main-image img-fluid" alt="{{ __('keywords.product_image_alt', ['name' => $product['name']]) }}">
+                                        <img src="{{ asset('images/' . $product['image'][0]['name']) }}" class="main-image mt-2 img-fluid w-100" alt="{{ __('keywords.product_image_alt', ['name' => $product['name']]) }}">
                                     @endif
 
                                     <!-- Hover image -->
                                     @if(isset($product['image'][1]))
-                                        <img src="{{ asset('images/' . $product['image'][1]['name']) }}" class="hover-image img-fluid" alt="{{ __('keywords.product_hover_image_alt', ['name' => $product['name']]) }}">
+                                        <img src="{{ asset('images/' . $product['image'][1]['name']) }}" class="hover-image mt-2 img-fluid w-100" alt="{{ __('keywords.product_hover_image_alt', ['name' => $product['name']]) }}">
                                     @endif
 
                                     <div class="product-icons d-flex flex-column">

@@ -1,4 +1,6 @@
 @extends('seller.layouts.master')
+@section('title', __('keywords.users') . ' - Dookan')
+
 @section('content')
 
     <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns dataTable_ms">
@@ -27,9 +29,9 @@
 
                         <td>
                             @if(!empty($user['image']))
-                                <img src="{{ asset('images/'.$user['image']['name']) }}" alt="{{ __('keywords.user_image') }}" class="img-fluid w-80">
+                                <img src="{{ asset('images/'.$user['image']['name']) }}" alt="{{ __('keywords.user_image') }}" class="img-fluid w-80" style="width: 70px;" >
                             @else
-                                <img src="{{ asset('images/default.png') }}" alt="{{ __('keywords.default_image') }}" class="img-fluid rounded-circle w-80" style="width: 150px; height: 150px;">
+                                <img src="{{ asset('images/default.png') }}" alt="{{ __('keywords.default_image') }}" class="img-fluid rounded-circle w-80" style="width: 70px; height: 70px;">
                             @endif
                         </td>
                         <td>{{ $user['email'] }}</td>

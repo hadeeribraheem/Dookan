@@ -97,7 +97,23 @@ return[
     'delivered'=>'تم التوصيل',
     'num_of_items'=>'عدد العناصر',
     'orders_note' => 'هنا يمكنك عرض جميع الطلبات، ملاحظة: سيتم تغيير حالة الطلب عندما يتم تحديث جميع عناصر الطلب.',
-
+    'seller_products_title' => 'منتجات :seller',
+    'search_title' => 'بحث - دكان',
+    'categories_title' => 'الفئات - دكان',
+    'home_title' => 'الرئيسية - دكان',
+    'cart_title' => 'السلة - دكان',
+    'sellers_title' => 'البائعون - دكان',
+    'category_title' => 'دكان - :category',
+    'product_title' => 'دكان - :product',
+    'wishlist_title' => 'قائمة الأمنيات - دكان',
+    'profile_title' => 'الملف الشخصي - دكان',
+    'orders_title' => 'الطلبات - دكان',
+    'address_title' => 'العناوين - دكان',
+    'order_items' => 'عناصر الطلب',
+    'products' => 'المنتجات',
+    'users' => 'المستخدمون',
+    'category_restored_success' => 'تم استعادة الفئة بنجاح.',
+    'category_restore_error' => 'الفئة غير موجودة أو نشطة بالفعل.',
     /********************************************************************/
 
     /*Success Messages*/

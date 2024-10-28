@@ -1,4 +1,6 @@
 @extends('admin.layouts.master')
+@section('title', __('keywords.users') . ' - Dookan')
+
 @section('content')
 
     <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns dataTable_ms">
@@ -58,7 +60,7 @@
 
                         <td>
                             @if(!empty($user['image']))
-                                <img src="{{ asset('images/'.$user['image']['name']) }}" alt="User Image" class="img-fluid w-80">
+                                <img src="{{ asset('images/'.$user['image']['name']) }}" alt="User Image" class="img-fluid w-50">
                             @else
                                 <img src="{{ asset('images/default.png') }}" alt="default.png" class="img-fluid rounded-circle w-80" style="width: 150px; height: 150px;">
                             @endif

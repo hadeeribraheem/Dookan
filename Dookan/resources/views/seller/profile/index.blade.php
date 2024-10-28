@@ -1,4 +1,6 @@
 @extends('seller.layouts.master')
+@section('title', __('keywords.profile_title'))
+
 @section('content')
 
     <section class="section">
@@ -11,7 +13,7 @@
             <div class="row mt-sm-4">
                 <div class="col-12 col-md-12 col-lg-7">
                     <div class="card">
-                        <form method="POST" action="{{ route('admin.update.user', Auth::user()->id) }}" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form method="POST" action="{{ route('seller.update.user', Auth::user()->id) }}" enctype="multipart/form-data" class="needs-validation" novalidate>
                             @csrf
                             @method('PUT')
                             <div class="card-header">

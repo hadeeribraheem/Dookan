@@ -1,4 +1,5 @@
 @extends('seller.layouts.master')
+@section('title', __('keywords.dashboard') . ' - Dookan')
 
 @section('content')
     <section class="dashboard section">

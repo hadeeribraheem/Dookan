@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Actions\DisplayDataWithCurrentLang;
 use App\Actions\HandleDataBeforeSaveAction;
 use App\Events\ProductsImagesSaveEvent;
 use App\Http\Controllers\Controller;
@@ -135,9 +136,10 @@ class ProductsControllerResource extends Controller
     {
         $productrowdata = $this->productRepository->getProductById($id);
         $product = ProductsResource::make($productrowdata)->resolve();
-
+        $getByProductID = Products::findOrFail($id);
+        $productName = DisplayDataWithCurrentLang::display( $getByProductID->name);
        //dd($product);
-        return view('Home.show_product',compact('product'));
+        return view('Home.show_product',compact('product','productName'));
     }
 
     /**

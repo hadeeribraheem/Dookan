@@ -1,4 +1,5 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.cart_title'))
 @section('content')
     <div class="container">
         @if(empty($cartResource))

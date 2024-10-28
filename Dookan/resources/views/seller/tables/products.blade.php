@@ -1,4 +1,6 @@
 @extends('seller.layouts.master')
+@section('title', __('keywords.products') . ' - Dookan')
+
 @section('content')
     <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns dataTable_ms">
 
@@ -23,7 +25,7 @@
                         <td>{{ $product['sku'] }}</td>
                         <td>
                             @if(!empty($product['image']))
-                                <img src="{{ asset('images/'.$product['image'][0]['name']) }}" alt="{{ __('keywords.product_image') }}" class="img-fluid w-50">
+                                <img src="{{ asset('images/'.$product['image'][0]['name']) }}" alt="{{ __('keywords.product_image') }}" class="img-fluid w-80">
                             @else
                                 <p>{{ __('keywords.no_image_available') }}</p>
                             @endif

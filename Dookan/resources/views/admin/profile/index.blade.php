@@ -1,9 +1,11 @@
 @extends('admin.layouts.master')
+@section('title', __('keywords.profile_title'))
+
 @section('content')
 
     <section class="section">
         <div class="section-body">
-            <h2 class="section-title ">{{ __('keywords.hi') }}, {{ Auth::user()->name }}!</h2>
+            <h2 class="section-title ">{{ __('keywords.hi', ['name' => Auth::user()->name]) }}</h2>
             <p class="section-lead">
                 {{ __('keywords.change_info') }}
             </p>

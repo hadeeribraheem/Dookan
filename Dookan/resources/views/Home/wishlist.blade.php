@@ -1,4 +1,6 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.wishlist_title'))
+
 @section('content')
     <div class="cart-wrap py-5">
         <div class="container">

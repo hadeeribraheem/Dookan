@@ -115,6 +115,8 @@ return[
     'total_categories' => 'Total Category',
     'total_products' => 'Total Products',
     'total_orders' => 'Total Orders',
+    'category_restored_success' => 'Category restored successfully.',
+    'category_restore_error' => 'Category not found or already active.',
     /************************************************************************/
     /** add category  **/
     'categorize_products' => 'Easily categorize your products here.',
@@ -313,6 +315,21 @@ return[
     'delivered'=>'Delivered',
     'num_of_items'=>'Number of items',
     'orders_note' => 'Here you can show all orders. Note: the status of the order will change when all order items are updated.',
+    'seller_products_title' => ':seller - Products',
+    'search_title' => 'Search - Dookan',
+    'categories_title' => 'Categories - Dookan',
+    'home_title' => 'Home - Dookan',
+    'cart_title' => 'Cart - Dookan',
+    'sellers_title' => 'Sellers - Dookan',
+    'category_title' => ':category - Dookan',
+    'product_title' => ':product - Dookan',
+    'wishlist_title' => 'Wishlist - Dookan',
+    'profile_title' => 'Profile - Dookan',
+    'orders_title' => 'Orders - Dookan',
+    'address_title' => 'Addresses - Dookan',
+    'order_items' => 'Order Items',
+    'products' => 'Products',
+    'users' => 'Users',
 
     /************************************************************************/
     'my_wishlist' => 'My Wishlist',

@@ -1,4 +1,5 @@
 @extends('seller.layouts.master')
+
 @section('content')
     <section class="section">
         <div class="section-body">

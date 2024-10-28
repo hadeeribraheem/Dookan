@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title', __('keywords.add_user') . ' - Dookan')
 @section('content')
     <section class="section">
         <div class="section-body">

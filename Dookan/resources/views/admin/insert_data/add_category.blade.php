@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('title', __('keywords.add_category') . ' - Dookan')
 @section('content')
     <section class="section">
         <div class="section-body">
@@ -44,4 +45,29 @@
             </div>
         </div>
     </section>
+    @if(session('soft_deleted_category'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: "Restore Category?",
+                    text: "{{ session('soft_deleted_category')['message'] }}",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, restore it!",
+                    cancelButtonText: "No, create a new one",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('restoreCategoryForm').submit();
+                    }
+                });
+            });
+        </script>
+
+        <form id="restoreCategoryForm" action="{{ route('admin.category.restore') }}" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="category_id" value="{{ session('soft_deleted_category')['id'] }}">
+        </form>
+    @endif
+
 @endsection

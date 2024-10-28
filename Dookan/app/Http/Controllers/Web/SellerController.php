@@ -48,9 +48,11 @@ class SellerController extends Controller
 
     public function getProductsBySellerID($vendorID)
     {
+        $seller = User::findOrFail($vendorID);
+        $sellerName = $seller->name;
         $products = $this->queryProductsByUser($vendorID);
         $productsResource = ProductsResource::collection($products)->resolve();
-        return view('Home.seller_products', compact('productsResource') );
+        return view('Home.seller_products', compact('productsResource','sellerName') );
     }
 
     private function queryProductsByUser($userId)
@@ -77,8 +79,9 @@ class SellerController extends Controller
     {
         return OrderItem::whereHas('product', function ($query) use ($sellerId) {
             $query->where('user_id', $sellerId);
-        })->sum('price * quantity');
+        })->selectRaw('SUM(price * quantity) as total_sales')->pluck('total_sales')->first();
     }
+
 
 
 }

@@ -1,5 +1,5 @@
 @extends('Home.layouts.master')
-
+@section('title', __('keywords.search_title'))
 @section('content')
     <div class="container mt-5">
         <div class="row">

@@ -1,4 +1,6 @@
 @extends('admin.layouts.master')
+@section('title', __('keywords.products') . ' - Dookan')
+
 @section('content')
     <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns dataTable_ms">
 

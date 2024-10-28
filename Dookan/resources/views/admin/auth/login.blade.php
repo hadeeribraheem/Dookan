@@ -1,4 +1,5 @@
 @extends('admin.auth.auth_layout')
+@section('title', __('keywords.login'))
 @section('content')
     <div class="login">
         <div class="container">

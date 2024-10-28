@@ -37,10 +37,19 @@ class CategoriesRepository
          $data['en_description'] = $descriptionTranslations['en'];
 
          // duplicate category
-         $duplicateCategory = $this->findByName($data['en_name']);
+         $duplicateCategory = $this->findByName($data['en_name'])
+                                     ->withTrashed()
+                                     ->first();
          if ($duplicateCategory&& !(isset($data['id']))) {
-             throw new DuplicateCategoryException();
-
+             if ($duplicateCategory->deleted_at) {
+                 session()->flash('soft_deleted_category', [
+                     'id' => $duplicateCategory->id,
+                     'message' => 'A category with this name exists but was deleted. Would you like to restore it?'
+                 ]);
+                 return redirect()->back();
+             } else {
+                 throw new DuplicateCategoryException();
+             }
          }
          return $this->updateOrCreate($data, $data['id'] ?? null);
      }
@@ -63,7 +72,6 @@ class CategoriesRepository
     public function findByName($name)
     {
         return Category::where('name->en', $name)
-            ->orWhere('name->ar', $name)
-            ->first();
+            ->orWhere('name->ar', $name);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Actions\DisplayDataWithCurrentLang;
 use App\Actions\HandleDataBeforeSaveAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryFormRequest;
@@ -87,9 +88,11 @@ class CategoryControllerResource extends Controller
     public function show(string $id)
     {
         $categoryById = $this->categoryRepository->getCategoryById($id);
+        $category = Category::findOrFail($id);
+        $categoryName = DisplayDataWithCurrentLang::display( $category->name);
         //dd($categoryById->products);
         $category = CategoriesResource::make($categoryById)->resolve();
-        return view('Home.show_category', compact('category'));
+        return view('Home.show_category', compact('category','categoryName'));
     }
 
     /**

@@ -1,4 +1,5 @@
 @extends('Home.layouts.master')
+@section('title', __('keywords.seller_products_title', ['seller' => $sellerName]))
 @section('content')
     <div class="container mt-5">
         <div class="row">

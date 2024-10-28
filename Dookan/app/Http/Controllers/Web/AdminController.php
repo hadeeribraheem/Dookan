@@ -48,4 +48,19 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+    public function restore(Request $request)
+    {
+        $category = Category::withTrashed()->find($request->category_id);
+
+        if ($category && $category->trashed()) {
+            $category->restore();
+            Flasher::addSuccess(__('keywords.category_restored_success'));
+            return redirect()->back();
+        }
+
+        Flasher::addError(__('keywords.category_restore_error'));
+        return redirect()->back();
+    }
+
 }

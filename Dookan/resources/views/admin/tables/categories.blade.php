@@ -27,7 +27,7 @@
                             <a href="{{ route('admin.categories.edit', $category['id']) }}" class="btn btn-sm btn-primary rounded-circle m-1">
                                 <i class="bi bi-pen-fill text-white"></i>
                             </a>
-                            <a href="/delete-item?model_name=Categories&id={{ $category['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1">
+                            <a href="/delete-item?model_name=Category&id={{ $category['id'] }}" class="btn btn-sm btn-danger rounded-circle m-1">
                                 <i class="bi bi-trash3-fill text-white"></i>
                             </a>
                         </td>

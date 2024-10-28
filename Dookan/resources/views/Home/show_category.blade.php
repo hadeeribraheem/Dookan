@@ -2,6 +2,7 @@
     use App\Actions\DisplayDataWithCurrentLang;
 @endphp
 @extends('Home.layouts.master')
+@section('title', __('keywords.category_title', ['category' => $categoryName]))
 @section('content')
     <div class="container mt-5">
         <div class="row">
