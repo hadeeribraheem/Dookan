@@ -2,7 +2,7 @@
     <ul class="sideBar-nav">
         <li class="menu-header">{{ __('keywords.dashboard') }}</li>
         <li class="nav-item">
-            <a href="{{route('admin.dashbaord')}}" class="nav-link">
+            <a href="{{route('admin.dashbaord',['lang' => app()->getLocale()])}}" class="nav-link">
                 <i class="bi bi-fire"></i>
                 <span>{{ __('keywords.dashboard') }}</span>
             </a>
@@ -17,17 +17,17 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sideBar">
                 <li>
-                    <a href="{{ route('admin.users.create') }}">
+                    <a href="{{ route('admin.users.create',['lang' => app()->getLocale()]) }}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.add_user') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.categories.create') }}">
+                    <a href="{{ route('admin.categories.create',['lang' => app()->getLocale()]) }}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.add_category') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.products.create') }}">
+                    <a href="{{route('admin.products.create',['lang' => app()->getLocale()]) }}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.add_product') }}</span>
                     </a>
                 </li>
@@ -42,18 +42,23 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sideBar">
                 <li>
-                    <a href="{{ route('admin.users.index') }}">
+                    <a href="{{ route('admin.users.index',['lang' => app()->getLocale()]) }}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.show_users') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.categories.index')}}">
+                    <a href="{{route('admin.categories.index',['lang' => app()->getLocale()])}}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.show_categories') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.products.index') }}">
+                    <a href="{{ route('admin.products.index',['lang' => app()->getLocale()]) }}">
                         <i class="bi bi-circle"></i><span>{{ __('keywords.show_products') }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('order.index',['lang' => app()->getLocale()]) }}">
+                        <i class="bi bi-circle"></i><span>{{ __('keywords.show_orders') }}</span>
                     </a>
                 </li>
             </ul>
@@ -61,7 +66,7 @@
 
         <li class="nav-heading">{{ __('keywords.pages') }}</li>
         <li class="nav-item">
-            <a href="{{ route('admin.profile') }}" class="nav-link collapsed">
+            <a href="{{ route('admin.profile',['lang' => app()->getLocale()]) }}" class="nav-link collapsed">
                 <i class="bi bi-person"></i>
                 <span>{{ __('keywords.profile') }}</span>
             </a>

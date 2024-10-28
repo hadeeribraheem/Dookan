@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Http\Resources\OrderItemResource;
 use App\Http\Resources\OrderResource;
 use App\Models\Cart;
 use App\Models\OrderItem;
@@ -25,10 +26,20 @@ class OrderController extends Controller
 
     public function index(){
             if (auth()->user()->role === 'admin') {
-               // return view('admin.tables.products', compact('productsResource'));
+                $blade_orders = Order::with(['items.product.images', 'address'])
+                                ->get();
+
+                $orders = OrderResource::collection($blade_orders)->resolve();
+                return view('admin.tables.orders', compact('orders'));
             }
             elseif (auth()->user()->role === 'seller') {
-               // return view('admin.tables.products', compact('productsResource'));
+                $user = auth()->user();
+                $blade_orders = Order::whereHas('items.product', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                })->with(['items.product.images', 'address'])->get();
+
+                $orders = OrderResource::collection($blade_orders)->resolve();
+                return view('seller.tables.orders', compact('orders'));
             }
                 $userId = auth()->id();
                 $blade_orders = Order::with(['items.product.images', 'address'])
@@ -87,7 +98,7 @@ class OrderController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $cartItem->product_id,
                     'quantity' => $cartItem->quantity,
-                    'price' => $itemData['price'], // Use the submitted product's price
+                    'price' => $itemData['price'],
                 ]);
             }
         }
@@ -102,13 +113,75 @@ class OrderController extends Controller
     {
         $order = Order::find($orderId);
 
-        if ($order && $order->status === 'Pending') {
+        if ($order && ($order->status === 'Pending') ) {
             $order->delete();
-            session()->flash('success', __('keywords.order_cancel_success'));
+            Flasher::addSuccess(__('keywords.order_cancel_success'));
         } else {
-            session()->flash('error', __('keywords.order_cancel_fail'));
+            Flasher::addWarning(__('keywords.order_cancel_fail'));
         }
 
         return redirect()->back();
     }
+
+    public function updateOrderStatus(Order $order)
+    {
+        $itemStatuses = $order->items()->pluck('status')->unique();
+
+        if ($itemStatuses->contains('Pending')) {
+            $order->status = 'Pending';
+        } elseif ($itemStatuses->contains('Shipped') && !$itemStatuses->contains('Pending') && !$itemStatuses->contains('Delivered')) {
+            $order->status = 'Shipped';
+        } elseif ($itemStatuses->count() === 1 && $itemStatuses->contains('Delivered')) {
+            $order->status = 'Delivered';
+        }
+
+        $order->save();
+    }
+
+    public function orderItemUpdateStatus(Request $request)
+    {
+        $request->validate([
+            'item_id' => 'required|exists:order_items,id',
+            'status' => 'required|string|in:Pending,Shipped,Delivered',
+        ]);
+
+        $item = OrderItem::findOrFail($request->item_id);
+        if (auth()->user()->role === 'admin' ||$item->product->user_id === auth()->id()) {
+            $item->status = $request->status;
+            $item->save();
+
+            $this->updateOrderStatus($item->order);
+
+            return redirect()->back()->with('success', 'Item status updated successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized action.');
+    }
+    public function showOrderItems($orderId)
+    {
+        if (auth()->user()->role === 'admin') {
+            // For admin, retrieve the full order with all items
+            $blade_order_items = Order::with('items.product.images')
+                ->where('id', $orderId)
+                ->first();
+
+            $order = OrderResource::make($blade_order_items)->resolve();
+
+            return view('admin.tables.order_items', compact('order'));
+        } elseif (auth()->user()->role === 'seller') {
+
+            $blade_order_items = Order::with(['items' => function ($query) {
+                $query->whereHas('product', function ($productQuery) {
+                    $productQuery->where('user_id', auth()->id());
+                });
+            }, 'items.product.images'])
+                ->where('id', $orderId)
+                ->first();
+
+            $order = OrderResource::make($blade_order_items)->resolve();
+
+            return view('seller.tables.order_items', compact('order'));
+        }
+    }
+
 }

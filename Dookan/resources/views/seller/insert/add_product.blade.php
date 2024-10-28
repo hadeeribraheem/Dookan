@@ -2,9 +2,9 @@
 @section('content')
     <section class="section">
         <div class="section-body">
-            <h2 class="section-title">{{ __('keywords.hi') }}, {{ Auth::user()->name }}!</h2> <!-- Translated greeting -->
+            <h2 class="section-title">{{ __('keywords.hi', ['name' => Auth::user()->name]) }}</h2>
             <p class="section-lead">
-                {{ __('keywords.add_your_products') }} <!-- Translated instruction -->
+                {{ __('keywords.add_your_products') }}
             </p>
 
             <div class="row mt-sm-4">

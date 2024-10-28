@@ -17,7 +17,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.profile') }}" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
+                <a href="{{ route('seller.profile') }}" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
                     @if(Auth::user()->image)
                         <img src="{{ asset('images/' .Auth::user()->image->name) }}" alt="image" style="width: 40px;height: 40px; object-fit: cover;" class="rounded-circle mr-1">
                     @else

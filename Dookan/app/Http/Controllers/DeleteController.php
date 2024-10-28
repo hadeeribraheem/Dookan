@@ -35,7 +35,7 @@ class DeleteController extends Controller
         }
         else{
             //return redirect()->back()->with('success', __('messages.deleted_successfully'));
-            Flasher::addSuccess(__('messages.deleted_successfully'));
+            Flasher::addSuccess(__('keywords.deleted_successfully'));
             return redirect()->back();
         }
 

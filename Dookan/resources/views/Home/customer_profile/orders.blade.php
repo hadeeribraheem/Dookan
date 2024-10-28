@@ -14,48 +14,37 @@
                 <div class="row mt-sm-4">
                     <div class="col-12">
                         {{-- Orders --}}
-                        @forelse($orders as $order)
+                        @foreach($orders as $order)
                             <div class="card mb-4 order-card">
                                 <div class="card-body">
                                     <div class="d-flex mb-3">
-                                        <h5 class="card-title">{{ __('Order') }} #{{ $order['order_id'] }}</h5>
-{{--
-                                        <button id="cancelOrderBtn" class="cancel-btn ms-auto">{{ __('Cancel') }}</button>
---}}
-                                        <form class="ms-auto" id="cancelOrderForm" action="{{ route('order.cancel', $order['order_id']) }}" method="POST">
+                                        <h5 class="card-title">{{ __('keywords.order') }} #{{ $order['order_id'] }}</h5>
+
+                                        <form  class="{{ app()->getLocale() === 'ar' ? 'me-auto' : 'ms-auto' }}"  id="cancelOrderForm-{{ $order['order_id'] }}" action="{{ route('order.cancel', ['orderId'=>$order['order_id'],'lang' => app()->getLocale()]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" id="cancelOrderBtn" class="btn btn-outline-dark">Cancel</button>
+                                            <button type="button" id="cancelOrderBtn-{{ $order['order_id'] }}" class="btn btn-outline-dark">{{ __('keywords.cancel') }}</button>
                                         </form>
-
                                     </div>
 
                                     <p class="card-text">
-                                        <strong>{{ __('Date:') }}</strong> {{ $order['created_at'] }} <br>
-                                        <strong>{{ __('Items:') }}</strong> {{ count($order['order_items']) }} <br>
-                                        <strong>{{ __('Total amount:') }}</strong> ${{ number_format($order['total_price'], 2) }} <br>
-                                        <strong>{{ __('Status:') }}</strong>
-                                        <span class="badge bg-{{ $order['status'] === 'Shipped' ? 'success' : 'warning' }}">
-                                    {{ ucfirst($order['status']) }}
-                                </span>
+                                        <strong>{{ __('keywords.date') }}</strong> {{ $order['created_at'] }} <br>
+                                        <strong>{{ __('keywords.items') }}</strong> {{ count($order['order_items']) }} <br>
+                                        <strong>{{ __('keywords.total_amount') }}</strong> ${{ number_format($order['total_price'], 2) }} <br>
+                                        <strong>{{ __('keywords.status') }}</strong>
+                                        <span class="badge bg-{{ $order['status'] === 'Pending' ? 'warning' : 'success' }}">
+                                            {{ ucfirst(__('keywords.' . strtolower($order['status']))) }}
+                                        </span>
                                     </p>
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <p class="mb-0"><strong>{{ __('Shipping address:') }}</strong> {{ $order['shipping_address'] }}</p>
-                                            <p class="mb-0"><strong>{{ __('Shipping tax:') }}</strong> $5</p>
 
-                                            <p class="mb-0"><strong>{{ __('Tracking number:') }}</strong> {{ $order['order_id'] }}</p>
-                                        </div>
-
-                                    </div>
-                                    {{-- Order Items Table --}}
+                                    <!-- Order Items Table -->
                                     <table class="table mt-3">
                                         <thead>
                                         <tr>
-                                            <th>{{ __('Product') }}</th>
-                                            <th>{{ __('Qty') }}</th>
-                                            <th>{{ __('Price') }}</th>
-                                            <th>{{ __('Total') }}</th>
+                                            <th>{{ __('keywords.product') }}</th>
+                                            <th>{{ __('keywords.qty') }}</th>
+                                            <th>{{ __('keywords.price') }}</th>
+                                            <th>{{ __('keywords.total') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -74,36 +63,37 @@
                                     </table>
                                 </div>
                             </div>
+                        @endforeach
 
-                        @empty
-                            <div class="alert alert-info text-center">
-                                {{ __('No orders found.') }}
-                            </div>
-                        @endforelse
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                        <script>
+                            document.querySelectorAll("[id^='cancelOrderBtn-']").forEach(button => {
+                                button.addEventListener('click', function(event) {
+                                    event.preventDefault();
+
+                                    const orderId = this.id.split('-')[1];
+                                    Swal.fire({
+                                        title: '{{ __("keywords.cancel_confirmation_title") }}',
+                                        text: '{{ __("keywords.cancel_confirmation_text") }}',
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: '{{ __("keywords.cancel_confirmation_confirm") }}',
+                                        cancelButtonText: '{{ __("keywords.cancel_button") }}', // Corrected line
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            document.getElementById('cancelOrderForm-' + orderId).submit();
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
-    <script>
-        document.getElementById('cancelOrderBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you want to cancel this order?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, cancel it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Submit the form if confirmed
-                    document.getElementById('cancelOrderForm').submit();
-                }
-            });
-        });
-    </script>
 @endsection

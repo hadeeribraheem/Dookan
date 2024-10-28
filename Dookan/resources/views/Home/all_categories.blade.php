@@ -13,7 +13,7 @@
                 </div>
             @else
                 @foreach($categories as $category)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mb-3">
                         <a href="{{ route('categoriesdata.show', ['categoriesdatum' => $category['id'], 'lang' => app()->getLocale()]) }}" class="product-card-link">
                             <div class="icon_box">
                                 <i class="{{ $category['icon'] }}"></i>

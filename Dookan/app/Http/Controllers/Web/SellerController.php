@@ -79,4 +79,6 @@ class SellerController extends Controller
             $query->where('user_id', $sellerId);
         })->sum('price * quantity');
     }
+
+
 }

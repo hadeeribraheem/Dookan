@@ -70,6 +70,30 @@ return[
 
     'order_cancel_success' => 'Order canceled successfully.',
     'order_cancel_fail' => 'Order cannot be canceled as it has already been shipped.',
+
+    'order' => 'Order',
+    'date' => 'Date:',
+    'items' => 'Items:',
+    'total_amount' => 'Total amount:',
+    'shipped' => 'Shipped',
+    'pending' => 'Pending',
+    'shipping_address' => 'Shipping address:',
+    'shipping_tax' => 'Shipping tax:',
+    'tracking_number' => 'Tracking number:',
+    'product' => 'Product',
+    'qty' => 'Qty',
+    'total' => 'Total',
+    'cancel' => 'Cancel',
+    'cancel_order_confirmation' => 'Are you sure?',
+    'cancel_order_text' => 'Do you want to cancel this order?',
+    'yes_cancel_it' => 'Yes, cancel it!',
+    'order_canceled' => 'Order canceled successfully.',
+    'order_not_canceled' => 'Order cannot be canceled as it has already been shipped.',
+    'cancel_confirmation_title' => 'Are you sure?',
+    'cancel_confirmation_text' => 'Do you want to cancel this order?',
+    'cancel_confirmation_confirm' => 'Yes, cancel it!',
+    'cancel_button' => 'Cancel',
+    'show_orders' => 'Show Orders',
     /*****************************************************/
 
     /*Success Messages*/
@@ -274,7 +298,7 @@ return[
     'summary' => 'Summary',
     'items_count' => 'ITEMS :count',
     'shipping' => 'SHIPPING',
-    'total_price' => 'TOTAL PRICE',
+    'total_price' => 'Total price',
     'checkout' => 'CHECKOUT',
     'choose_address' => 'Choose Address',
     'select_saved_address' => 'Please select one of your saved addresses:',
@@ -284,6 +308,12 @@ return[
     'address_ar' => 'Address in (Arabic)',
     'close' => 'Close',
     'submit_order' => 'Submit Order',
+    'order_status'=>'Order Status',
+    'status_updated'=>'Status updated successfully.',
+    'delivered'=>'Delivered',
+    'num_of_items'=>'Number of items',
+    'orders_note' => 'Here you can show all orders. Note: the status of the order will change when all order items are updated.',
+
     /************************************************************************/
     'my_wishlist' => 'My Wishlist',
     'empty_wishlist_message' => "There isn't any products in Your wishlist, Add products and come back soon!",

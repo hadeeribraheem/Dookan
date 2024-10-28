@@ -14,7 +14,7 @@
 
                 </div>
                 <h2 class="text-center">{{ __('keywords.login_page') }}</h2>
-                <form method="post" action="{{ route('admin.auth.login') }}" enctype="multipart/form-data" class="admin-login">
+                <form method="post" action="{{ route('admin.auth.login',['lang'=>app()->getLocale()]) }}" enctype="multipart/form-data" class="admin-login">
                     @csrf
                     @if (Session::has('success'))
                         <div class="alert alert-success">

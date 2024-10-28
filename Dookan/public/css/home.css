@@ -1,5 +1,6 @@
 /** rubic font for arabic in rtl **/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 html[dir="rtl"] body{
     font-family: 'Rubik', sans-serif !important;
@@ -158,7 +159,7 @@ html[dir="rtl"] .navbar-nav {
     border-radius: 8px;
     transition: transform 0.3s ease;
     text-decoration: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     height: 400px;
 }
 .product-card:hover {
@@ -243,13 +244,13 @@ html[dir="rtl"] .navbar-nav {
     padding: 15px;
 }
 .product-category{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     color: #5c677d;
     font-size: 14px;
     font-weight: 500;
 }
 .product-title {
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     font-size: 17px;
     font-weight: 600;
     color: #013a63;
@@ -307,7 +308,7 @@ html[dir="rtl"] .navbar-nav {
 /*** wishlist **/
 .cart-wrap {
     padding: 40px 0;
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
 }
 .main-heading {
     font-size: 19px;
@@ -421,6 +422,12 @@ text-decoration: none;
 @media(max-width:767px){
     .card{
         margin: 3vh auto;
+    }
+    .order-card{
+        padding: 0!important;
+    }
+    .section-body {
+        margin-left: 0 !important;
     }
 }
 .cart{
@@ -554,7 +561,7 @@ text-decoration: none;
     height: 42px;
     border-radius: 15px !important;
     border: solid 2px #ffffff;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
 
 }
 .checkout-btn:hover,
@@ -566,7 +573,6 @@ text-decoration: none;
 /******* profile customer **********/
 /*******************************************************/
 /*-- start of side bar --*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 ::after,
 ::before {
@@ -829,7 +835,7 @@ html[dir="rtl"] .section .section-title:before {
 .product-thumbnails img {
     margin: 10px;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     width: 24%;
     height: 24%;
     border-radius: 16px;
@@ -838,7 +844,7 @@ html[dir="rtl"] .section .section-title:before {
     width: 80%;
     height: auto;
     border-radius: 15px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
 }
 /***** modal in cart******/
 .modal-header,.modal-body{
@@ -848,7 +854,7 @@ html[dir="rtl"] .section .section-title:before {
 .icon_box {
     background-color: white;
     padding: 50px 40px;
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease-out 0s;
     text-decoration: none;
@@ -884,7 +890,7 @@ html[dir="rtl"] .section .section-title:before {
 .vendor-card{
     background-color: #a9d6e5;
     border-radius: 15px;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: rgba(6, 24, 44, 0.4) 0 0 0 2px, rgba(6, 24, 44, 0.65) 0 4px 6px -1px, rgba(255, 255, 255, 0.08) 0 1px 0 inset;
     position: relative;
     margin: 10px;
     padding: 13px;
@@ -907,7 +913,7 @@ html[dir="rtl"] .section .section-title:before {
     margin-right: 5px;
 }
 .vendor-card  .card-title{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     color: #012a4a;
 }
 .vendor-products a{
@@ -924,11 +930,11 @@ html[dir="rtl"] .section .section-title:before {
    color: #f1f1f1;
 }
 .vendor-products h2 , .vendor-header h1{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     color: #012a4a;
 }
 .vendor-header p{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     font-weight: 500;
 }
 html[dir="rtl"] .vendor-header h1{
@@ -942,11 +948,11 @@ html[dir="rtl"] .vendor-header p{
 /*******************************************************/
 /** all categories page **/
 .category-header h1{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     color: #012a4a;
 }
 .category-header p{
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
     font-weight: 500;
 }
 html[dir="rtl"] .category-header h1{
@@ -960,13 +966,13 @@ html[dir="rtl"] .category-header p{
 /*******************************************************/
 /** all orders page **/
 .order-card{
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0 0 0 3px;
     padding: 15px;
 }
 .order-card .card-title{
     color: #01161e;
     font-weight: 500;
-    font-family: var(--roboto-font);
+    font-family: var(--roboto-font), sans-serif;
 }
 .order-card p>strong{
     color: #0b2545;

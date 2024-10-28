@@ -42,6 +42,11 @@
                         <i class="bi bi-circle"></i><span>{{ __('keywords.show_products') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('order.index',['lang' => app()->getLocale()]) }}">
+                        <i class="bi bi-circle"></i><span>{{ __('keywords.show_orders') }}</span>
+                    </a>
+                </li>
             </ul>
         </li>
 

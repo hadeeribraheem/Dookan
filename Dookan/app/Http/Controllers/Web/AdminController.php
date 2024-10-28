@@ -41,10 +41,11 @@ class AdminController extends Controller
         if (auth()->attempt($data)) {
             $user = auth()->user()->load('image');
             session(['user' => $user]);
-            return view('admin.profile.index');
+            return $this->dashboard();
         }
         else {
             Flasher::addError(__('keywords.login_error'));
+            return redirect()->back();
         }
     }
 }

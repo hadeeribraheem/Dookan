@@ -68,6 +68,36 @@ return[
 
     'order_cancel_success' => 'تم إلغاء الطلب بنجاح.',
     'order_cancel_fail' => 'لا يمكن إلغاء الطلب لأنه تم شحنه بالفعل.',
+
+    'order' => 'طلب',
+    'date' => 'التاريخ:',
+    'items' => 'العناصر:',
+    'total_amount' => 'إجمالي المبلغ:',
+    'shipped' => 'تم الشحن',
+    'pending' => 'قيد الانتظار',
+    'shipping_address' => 'عنوان الشحن:',
+    'shipping_tax' => 'ضريبة الشحن:',
+    'tracking_number' => 'رقم التتبع:',
+    'product' => 'المنتج',
+    'qty' => 'الكمية',
+    'total' => 'الإجمالي',
+    'cancel' => 'إلغاء',
+    'cancel_order_confirmation' => 'هل أنت متأكد؟',
+    'cancel_order_text' => 'هل تريد إلغاء هذا الطلب؟',
+    'yes_cancel_it' => 'نعم، قم بالإلغاء!',
+    'order_canceled' => 'تم إلغاء الطلب بنجاح.',
+    'order_not_canceled' => 'لا يمكن إلغاء الطلب لأنه تم شحنه بالفعل.',
+    'cancel_confirmation_title' => 'هل أنت متأكد؟',
+    'cancel_confirmation_text' => 'هل تريد إلغاء هذا الطلب؟',
+    'cancel_confirmation_confirm' => 'نعم، قم بالإلغاء!',
+    'cancel_button' => 'إلغاء',
+    'show_orders'=>'عرض الطلبات',
+    'order_status'=>'حالة الطلب',
+    'status_updated'=>'تم تحديث الحالة بنجاح.',
+    'delivered'=>'تم التوصيل',
+    'num_of_items'=>'عدد العناصر',
+    'orders_note' => 'هنا يمكنك عرض جميع الطلبات، ملاحظة: سيتم تغيير حالة الطلب عندما يتم تحديث جميع عناصر الطلب.',
+
     /********************************************************************/
 
     /*Success Messages*/

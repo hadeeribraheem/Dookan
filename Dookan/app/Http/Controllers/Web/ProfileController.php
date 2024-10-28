@@ -34,11 +34,11 @@ class ProfileController extends Controller
 
     public function update_user(SaveUserInfoFormRequest $request)
     {
+
         $data = $request->all();
         $user = Auth::user();
-
         $file = $request->hasFile('personal_image') ? $request->file('personal_image') : null;
-
+        //dd($user->id);
         $user = $this->userUpdateService->updateExistingUser($data, $file, $user->id);
 
         Flasher::addSuccess('Updated successfully!');

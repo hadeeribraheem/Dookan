@@ -12,7 +12,7 @@ class ImageService
 
     public function resolveImage($file, $user = null)
     {
-        //dd($file);
+        //dd($user);
 
         return DB::transaction(function() use ($file, $user) {
             //dd($file);
@@ -31,18 +31,17 @@ class ImageService
                     return 'default.png';
 
             }
-/*
- * if ($user && $user->image) {
-                $oldImagePath = public_path('images/' . $user->image->name);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
-            }
-*/
+            /*
+             * if ($user && $user->image) {
+                            $oldImagePath = public_path('images/' . $user->image->name);
+                            if (file_exists($oldImagePath)) {
+                                unlink($oldImagePath);
+                            }
+                        }
+            */
             /* && $user->image->name !== 'default.png'*/
             // If file is provided and user already has an image, delete old one
             if ($user && $user->image) {
-                //dd($user->image->name);
                 $this->deleteOldImage($user);
             }
             //dd($this->upload($file, 'users'));
@@ -72,7 +71,6 @@ class ImageService
             if($user->image->name != $this->DefaultImage){
                 $oldImagePath = public_path('images/' . $user->image->name);
                 //dd($oldImagePath);
-
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }

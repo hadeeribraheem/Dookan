@@ -17,8 +17,8 @@
             </ul>
 
             <ul class="navbar-nav {{ app()->getLocale() === 'ar' ? 'me-auto' : 'ms-auto' }}">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('keywords.contact_us') }}</a>
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="{{ route('profile', ['lang' => app()->getLocale()]) }}">{{ __('keywords.profile') }}</a>
                 </li>
                 @guest
                     <li class="nav-item">

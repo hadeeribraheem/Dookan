@@ -29,6 +29,8 @@ class UserRegistrationService
 
     public function registerUser($data, $file = null, $id = null)
     {
+        //dd($data);
+        //dd($file);
         return DB::transaction(function() use ($data, $file, $id) {
 
             // Find existing user if updating
@@ -59,6 +61,9 @@ class UserRegistrationService
 
     public function updateExistingUser($data, $file = null, $id)
     {
+       // dd($data);
+        //dd($file);
+       // dd($id);
         return $this->registerUser($data, $file, $id);
     }
 
