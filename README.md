@@ -1,5 +1,4 @@
 
-https://github.com/user-attachments/assets/c9554c31-59bc-456a-b7e9-d04cb7f11afb
 Run the following command to migrate and seed the database. This will apply any additional migrations and populate the database with predefined users and languages:
 ```bash
 php artisan migrate --seed
